@@ -1,0 +1,550 @@
+<!-- this is a file defining Triangle-strip Design in split.gdml -->
+<!-- it is _not_ a standalone GDML file -->
+<!-- This file should be referenced in <structure></structure>-->
+<!-- Dependencies : Config/MaterialDB/SolidDB.gdml_entity-->
+
+<volume name="Scintillator">
+  <materialref ref="EJ200_PVT" />
+  <solidref ref="triBarScintS" />
+  <physvol copynumber="0">
+    <volumeref ref="Groove" />
+    <position unit="mm" x="2" z="(triBarScintH-grooveDepth)/2" />
+    <rotation y="180" unit="degree" />
+  </physvol>
+  <physvol copynumber="1">
+    <volumeref ref="Groove" />
+    <position unit="mm" x="-2" z="(triBarScintH-grooveDepth)/2" />
+    <rotation y="180" unit="degree" />
+  </physvol>
+
+</volume>
+
+<volume name="Module">
+  <materialref ref="AIR" />
+  <solidref ref="triBarModuleS" />
+  <physvol>
+    <volumeref ref="Scintillator" />
+    <position z="triBarScintZ" unit="mm" />
+  </physvol>
+</volume>
+
+<volume name="Detector">
+  <materialref ref="AIR" />
+  <solidref ref="detectorS" />
+  <loop for="idxX1" to="triangleBarN0-1" step="1">
+    <physvol copynumber="idxX1">
+      <volumeref ref="Module" />
+      <position x="(-triangleBarN0/2.+0.5+idxX1)*triBarModuleW" z="-triBarModuleH/2" unit="mm" />
+    </physvol>
+  </loop>
+  <loop for="idxX2" to="triangleBarN0-2" step="1">
+    <physvol copynumber="idxX2+triangleBarN0">
+      <volumeref ref="Module" />
+      <position x="(-triangleBarN0/2.+1.+idxX2)*triBarModuleW" z="-triBarModuleH/2" unit="mm" />
+      <rotation y="180" unit="degree" />
+    </physvol>
+  </loop>
+</volume>
+
+
+<!-- Scintillator: with groove/round groove -->
+<volume name="ScinWithOme">
+  <materialref ref="EJ200_PVT" />
+  <solidref ref="scinSub2OmeGro"/>
+</volume>
+<volume name="ScinWithRou">
+  <materialref ref="EJ200_PVT" />
+  <solidref ref="scinSub2RouGro"/>
+</volume>
+
+<volume name="ScinWithFul">
+  <materialref ref="EJ200_PVT" />
+  <solidref ref="scinSub2FulGro"/>
+</volume>
+
+
+<volume name="ScinWithOmeCenter">
+  <materialref ref="EJ200_PVT" />
+  <solidref ref="scinSubOmeGroCenter"/>
+</volume>
+<volume name="ScinWithRouCenter">
+  <materialref ref="EJ200_PVT" />
+  <solidref ref="scinSubRouGroCenter"/>
+</volume>
+
+<!-- Module: round/omega grooves with EJ-500/air coupling -->
+<volume name="Module-Ome-EJ">
+  <materialref ref="AIR"/>
+  <solidref ref="triBarModuleS"/>
+  <physvol>
+    <volumeref ref="ScinWithOme"/>
+    <position z="triBarScintZ" unit="mm"/>
+  </physvol>
+
+  <physvol copynumber="0">
+    <volumeref ref="OmegaGroove-EJ500"/>
+    <rotation unit="deg" x="270"/>
+    <position x="grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+  <physvol copynumber="1">
+    <volumeref ref="OmegaGroove-EJ500"/>
+    <rotation unit="deg" x="270"/>
+    <position x="-grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+
+  <physvol copynumber="0">
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="270"/>
+    <position x="-grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+  <physvol copynumber="1">
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="270"/>
+    <position x="grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+</volume>
+
+<volume name="Module-Ome-Air">
+  <materialref ref="AIR"/>
+  <solidref ref="triBarModuleS"/>
+  <physvol>
+    <volumeref ref="ScinWithOme"/>
+    <position z="triBarScintZ" unit="mm"/>
+  </physvol>
+
+  <physvol copynumber="0">
+    <volumeref ref="OmegaGroove-Air"/>
+    <rotation unit="deg" x="270"/>
+    <position x="grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+  <physvol copynumber="1">
+    <volumeref ref="OmegaGroove-Air"/>
+    <rotation unit="deg" x="270"/>
+    <position x="-grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+
+  <physvol copynumber="0">
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="270"/>
+    <position x="-grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+  <physvol copynumber="1">
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="270"/>
+    <position x="grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+</volume>
+
+<volume name="Module-Rou-EJ">
+  <materialref ref="AIR"/>
+  <solidref ref="triBarModuleS"/>
+  <physvol>
+    <volumeref ref="ScinWithRou"/>
+    <position z="triBarScintZ" unit="mm"/>
+  </physvol>
+
+  <physvol copynumber="0">
+    <volumeref ref="RoundGroove-EJ500"/>
+    <rotation unit="deg" x="90"/>
+    <position x="grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+  <physvol copynumber="1">
+    <volumeref ref="RoundGroove-EJ500"/>
+    <rotation unit="deg" x="90"/>
+    <position x="-grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+
+  <physvol copynumber="0">
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="90"/>
+    <position x="-grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+  <physvol copynumber="1">
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="90"/>
+    <position x="grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+</volume>
+
+<volume name="Module-Rou-Air">
+  <materialref ref="AIR"/>
+  <solidref ref="triBarModuleS"/>
+  <physvol>
+    <volumeref ref="ScinWithRou"/>
+    <position z="triBarScintZ" unit="mm"/>
+  </physvol>
+
+  <physvol copynumber="0">
+    <volumeref ref="RoundGroove-Air"/>
+    <rotation unit="deg" x="90"/>
+    <position x="grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+  <physvol copynumber="1">
+    <volumeref ref="RoundGroove-Air"/>
+    <rotation unit="deg" x="90"/>
+    <position x="-grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+
+  <physvol copynumber="0">
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="90"/>
+    <position x="-grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+  <physvol copynumber="1">
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="90"/>
+    <position x="grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+</volume>
+
+<volume name="Module-Ome-EJ-Single">
+  <materialref ref="AIR"/>
+  <solidref ref="triBarModuleS"/>
+  <physvol>
+    <volumeref ref="ScinWithOmeCenter"/>
+    <position z="triBarScintZ" unit="mm"/>
+  </physvol>
+
+  <physvol>
+    <volumeref ref="OmegaGroove-EJ500"/>
+    <rotation unit="deg" x="270"/>
+    <position z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+
+  <physvol>
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="270"/>
+    <position z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+</volume>
+
+<volume name="Module-Ome-Air-Single">
+  <materialref ref="AIR"/>
+  <solidref ref="triBarModuleS"/>
+  <physvol>
+    <volumeref ref="ScinWithOmeCenter"/>
+    <position z="triBarScintZ" unit="mm"/>
+  </physvol>
+
+  <physvol>
+    <volumeref ref="OmegaGroove-Air"/>
+    <rotation unit="deg" x="270"/>
+    <position z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+
+  <physvol>
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="270"/>
+    <position z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+</volume>
+
+<volume name="Module-Rou-EJ-Single">
+  <materialref ref="AIR"/>
+  <solidref ref="triBarModuleS"/>
+  <physvol>
+    <volumeref ref="ScinWithRouCenter"/>
+    <position z="triBarScintZ" unit="mm"/>
+  </physvol>
+
+  <physvol>
+    <volumeref ref="RoundGroove-EJ500"/>
+    <rotation unit="deg" x="90"/>
+    <position z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+
+  <physvol>
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="90"/>
+    <position z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+</volume>
+
+<volume name="Module-Rou-Air-Single">
+  <materialref ref="AIR"/>
+  <solidref ref="triBarModuleS"/>
+  <physvol>
+    <volumeref ref="ScinWithRouCenter"/>
+    <position z="triBarScintZ" unit="mm"/>
+  </physvol>
+
+  <physvol>
+    <volumeref ref="RoundGroove-Air"/>
+    <rotation unit="deg" x="90"/>
+    <position z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+
+  <physvol>
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="90"/>
+    <position z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+</volume>
+
+
+<volume name="Module-Ful-EJ">
+  <materialref ref="AIR"/>
+  <solidref ref="triBarModuleS"/>
+  <physvol>
+    <volumeref ref="ScinWithFul"/>
+    <position z="triBarScintZ" unit="mm"/>
+  </physvol>
+
+  <physvol copynumber="0">
+    <volumeref ref="FullGroove-EJ500"/>
+    <rotation unit="deg" x="270"/>
+    <position x="grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+  <physvol copynumber="1">
+    <volumeref ref="FullGroove-EJ500"/>
+    <rotation unit="deg" x="270"/>
+    <position x="-grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+
+  <physvol copynumber="0">
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="270"/>
+    <position x="-grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+  <physvol copynumber="1">
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="270"/>
+    <position x="grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+</volume>
+
+<volume name="Module-Ful-Air">
+  <materialref ref="AIR"/>
+  <solidref ref="triBarModuleS"/>
+  <physvol>
+    <volumeref ref="ScinWithFul"/>
+    <position z="triBarScintZ" unit="mm"/>
+  </physvol>
+
+  <physvol copynumber="0">
+    <volumeref ref="FullGroove-Air"/>
+    <rotation unit="deg" x="270"/>
+    <position x="grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+  <physvol copynumber="1">
+    <volumeref ref="FullGroove-Air"/>
+    <rotation unit="deg" x="270"/>
+    <position x="-grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+
+  <physvol copynumber="0">
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="270"/>
+    <position x="-grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+  <physvol copynumber="1">
+    <volumeref ref="Fiber"/>
+    <rotation unit="deg" x="270"/>
+    <position x="grooveOffset" z="triBarScintZ+triBarScintH/2-(grooveDepth-grooveWidth/2.0)" unit="mm"/>
+  </physvol>
+</volume>
+
+
+<!-- Detector Setup -->
+
+<volume name="Detector-Origin">
+  <materialref ref="AIR" />
+  <solidref ref="detectorS" />
+  <loop for="idx_oriX1" to="triangleBarN0-1" step="1">
+    <physvol copynumber="idx_oriX1">
+      <volumeref ref="Module" />
+      <position x="(-triangleBarN0/2.+0.5+idx_oriX1)*triBarModuleW"  z="-triBarModuleH/2"  unit="mm" />
+    </physvol>
+  </loop>
+  <loop for="idx_oriX2" to="triangleBarN0-2" step="1">
+    <physvol copynumber="idx_oriX2+triangleBarN0">
+      <volumeref ref="Module" />
+      <position x="(-triangleBarN0/2.+1.+idx_oriX2)*triBarModuleW"  z="-triBarModuleH/2"  unit="mm" />
+      <rotation y="180" unit="degree" />
+    </physvol>
+  </loop>
+</volume>
+
+<volume name="Detector-Ome-EJ">
+  <materialref ref="AIR" />
+  <solidref ref="detectorS" />
+  <loop for="idx_ome_EJX1" to="triangleBarN0-1" step="1">
+    <physvol copynumber="idx_ome_EJX1">
+      <volumeref ref="Module-Ome-EJ" />
+      <position x="(-triangleBarN0/2.+0.5+idx_ome_EJX1)*triBarModuleW" unit="mm" />
+    </physvol>
+  </loop>
+  <loop for="idx_ome_EJX2" to="triangleBarN0-2" step="1">
+    <physvol copynumber="idx_ome_EJX2+triangleBarN0">
+      <volumeref ref="Module-Ome-EJ" />
+      <position x="(-triangleBarN0/2.+1.+idx_ome_EJX2)*triBarModuleW" unit="mm" />
+      <rotation y="180" unit="degree" />
+    </physvol>
+  </loop>
+</volume>
+
+<volume name="Detector-Ome-Air">
+  <materialref ref="AIR" />
+  <solidref ref="detectorS" />
+  <loop for="idx_ome_AirX1" to="triangleBarN0-1" step="1">
+    <physvol copynumber="idx_ome_AirX1">
+      <volumeref ref="Module-Ome-Air" />
+      <position x="(-triangleBarN0/2.+0.5+idx_ome_AirX1)*triBarModuleW" unit="mm" />
+    </physvol>
+  </loop>
+  <loop for="idx_ome_AirX2" to="triangleBarN0-2" step="1">
+    <physvol copynumber="idx_ome_AirX2+triangleBarN0">
+      <volumeref ref="Module-Ome-Air" />
+      <position x="(-triangleBarN0/2.+1.+idx_ome_AirX2)*triBarModuleW" unit="mm" />
+      <rotation y="180" unit="degree" />
+    </physvol>
+  </loop>
+</volume>
+
+<volume name="Detector-Rou-EJ">
+  <materialref ref="AIR" />
+  <solidref ref="detectorS" />
+  <loop for="idx_rou_EJX1" to="triangleBarN0-1" step="1">
+    <physvol copynumber="idx_rou_EJX1">
+      <volumeref ref="Module-Rou-EJ" />
+      <position x="(-triangleBarN0/2.+0.5+idx_rou_EJX1)*triBarModuleW" unit="mm" />
+    </physvol>
+  </loop>
+  <loop for="idx_rou_EJX2" to="triangleBarN0-2" step="1">
+    <physvol copynumber="idx_rou_EJX2+triangleBarN0">
+      <volumeref ref="Module-Rou-EJ" />
+      <position x="(-triangleBarN0/2.+1.+idx_rou_EJX2)*triBarModuleW" unit="mm" />
+      <rotation y="180" unit="degree" />
+    </physvol>
+  </loop>
+</volume>
+
+<volume name="Detector-Rou-Air">
+  <materialref ref="AIR" />
+  <solidref ref="detectorS" />
+  <loop for="idx_rou_AirX1" to="triangleBarN0-1" step="1">
+    <physvol copynumber="idx_rou_AirX1">
+      <volumeref ref="Module-Rou-Air" />
+      <position x="(-triangleBarN0/2.+0.5+idx_rou_AirX1)*triBarModuleW" unit="mm" />
+    </physvol>
+  </loop>
+  <loop for="idx_rou_AirX2" to="triangleBarN0-2" step="1">
+    <physvol copynumber="idx_rou_AirX2+triangleBarN0">
+      <volumeref ref="Module-Rou-Air" />
+      <position x="(-triangleBarN0/2.+1.+idx_rou_AirX2)*triBarModuleW" unit="mm" />
+      <rotation y="180" unit="degree" />
+    </physvol>
+  </loop>
+</volume>
+
+<volume name="Detector-Ome-EJ-Single">
+  <materialref ref="AIR" />
+  <solidref ref="detectorS" />
+  <loop for="idx_ome_EJX1_Single" to="triangleBarN0-1" step="1">
+    <physvol copynumber="idx_ome_EJX1_Single">
+      <volumeref ref="Module-Ome-EJ-Single" />
+      <position x="(-triangleBarN0/2.+0.5+idx_ome_EJX1_Single)*triBarModuleW" unit="mm" />
+    </physvol>
+  </loop>
+  <loop for="idx_ome_EJX2_Single" to="triangleBarN0-2" step="1">
+    <physvol copynumber="idx_ome_EJX2_Single+triangleBarN0">
+      <volumeref ref="Module-Ome-EJ-Single" />
+      <position x="(-triangleBarN0/2.+1.+idx_ome_EJX2_Single)*triBarModuleW" unit="mm" />
+      <rotation y="180" unit="degree" />
+    </physvol>
+  </loop>
+</volume>
+
+<volume name="Detector-Ome-Air-Single">
+  <materialref ref="AIR" />
+  <solidref ref="detectorS" />
+  <loop for="idx_ome_AirX1_Single" to="triangleBarN0-1" step="1">
+    <physvol copynumber="idx_ome_AirX1_Single">
+      <volumeref ref="Module-Ome-Air-Single" />
+      <position x="(-triangleBarN0/2.+0.5+idx_ome_AirX1_Single)*triBarModuleW" unit="mm" />
+    </physvol>
+  </loop>
+  <loop for="idx_ome_AirX2_Single" to="triangleBarN0-2" step="1">
+    <physvol copynumber="idx_ome_AirX2_Single+triangleBarN0">
+      <volumeref ref="Module-Ome-Air-Single" />
+      <position x="(-triangleBarN0/2.+1.+idx_ome_AirX2_Single)*triBarModuleW" unit="mm" />
+      <rotation y="180" unit="degree" />
+    </physvol>
+  </loop>
+</volume>
+
+<volume name="Detector-Rou-EJ-Single">
+  <materialref ref="AIR" />
+  <solidref ref="detectorS" />
+  <loop for="idx_rou_EJX1_Single" to="triangleBarN0-1" step="1">
+    <physvol copynumber="idx_rou_EJX1_Single">
+      <volumeref ref="Module-Rou-EJ-Single" />
+      <position x="(-triangleBarN0/2.+0.5+idx_rou_EJX1_Single)*triBarModuleW" unit="mm" />
+    </physvol>
+  </loop>
+  <loop for="idx_rou_EJX2_Single" to="triangleBarN0-2" step="1">
+    <physvol copynumber="idx_rou_EJX2_Single+triangleBarN0">
+      <volumeref ref="Module-Rou-EJ-Single" />
+      <position x="(-triangleBarN0/2.+1.+idx_rou_EJX2_Single)*triBarModuleW" unit="mm" />
+      <rotation y="180" unit="degree" />
+    </physvol>
+  </loop>
+</volume>
+
+<volume name="Detector-Rou-Air-Single">
+  <materialref ref="AIR" />
+  <solidref ref="detectorS" />
+  <loop for="idx_rou_AirX1_Single" to="triangleBarN0-1" step="1">
+    <physvol copynumber="idx_rou_AirX1_Single">
+      <volumeref ref="Module-Rou-Air-Single" />
+      <position x="(-triangleBarN0/2.+0.5+idx_rou_AirX1_Single)*triBarModuleW" unit="mm" />
+    </physvol>
+  </loop>
+  <loop for="idx_rou_AirX2_Single" to="triangleBarN0-2" step="1">
+    <physvol copynumber="idx_rou_AirX2_Single+triangleBarN0">
+      <volumeref ref="Module-Rou-Air-Single" />
+      <position x="(-triangleBarN0/2.+1.+idx_rou_AirX2_Single)*triBarModuleW" unit="mm" />
+      <rotation y="180" unit="degree" />
+    </physvol>
+  </loop>
+</volume>
+
+<volume name="Detector-Ful-EJ">
+  <materialref ref="AIR" />
+  <solidref ref="detectorS" />
+  <loop for="idx_ful_EJX1" to="triangleBarN0-1" step="1">
+    <physvol copynumber="idx_ful_EJX1">
+      <volumeref ref="Module-Ful-EJ" />
+      <position x="(-triangleBarN0/2.+0.5+idx_ful_EJX1)*triBarModuleW" unit="mm" />
+    </physvol>
+  </loop>
+  <loop for="idx_ful_EJX2" to="triangleBarN0-2" step="1">
+    <physvol copynumber="idx_ful_EJX2+triangleBarN0">
+      <volumeref ref="Module-Ful-EJ" />
+      <position x="(-triangleBarN0/2.+1.+idx_ful_EJX2)*triBarModuleW" unit="mm" />
+      <rotation y="180" unit="degree" />
+    </physvol>
+  </loop>
+</volume>
+
+<volume name="Detector-Ful-Air">
+  <materialref ref="AIR" />
+  <solidref ref="detectorS" />
+  <loop for="idx_ful_AirX1" to="triangleBarN0-1" step="1">
+    <physvol copynumber="idx_ful_AirX1">
+      <volumeref ref="Module-Ful-Air" />
+      <position x="(-triangleBarN0/2.+0.5+idx_ful_AirX1)*triBarModuleW" unit="mm" />
+    </physvol>
+  </loop>
+  <loop for="idx_ful_AirX2" to="triangleBarN0-2" step="1">
+    <physvol copynumber="idx_ful_AirX2+triangleBarN0">
+      <volumeref ref="Module-Ful-Air" />
+      <position x="(-triangleBarN0/2.+1.+idx_ful_AirX2)*triBarModuleW" unit="mm" />
+      <rotation y="180" unit="degree" />
+    </physvol>
+  </loop>
+</volume>
+
+
+
+

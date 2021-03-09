@@ -1,0 +1,145 @@
+<!-- this is a file defining Slab Design (G4LogicalVolume) in split.gdml -->
+<!-- it is _not_ a standalone GDML file -->
+<!-- This file should be referenced in <structure></structure>-->
+<!-- Dependencies : Config/MaterialDB/SolidDB.gdml_entity-->
+
+<!-- Structure : Detector<-Module(Wrapper/Coating)
+  <-Scintillator<-Groove<-Fiber
+    <- Cladding2<-Cladding1<-Core
+    <- PMT -->
+
+<volume name="PMT">
+  <materialref ref="G4_Al" />
+  <solidref ref="pmtS" />
+</volume>
+
+<volume name="Reflect">
+  <materialref ref="G4_Ag" />
+  <solidref ref="reflectS" />
+</volume>
+
+<volume name="Core">
+  <materialref ref="Y11_CORE_PS" />
+  <solidref ref="coreS" />
+</volume>
+
+<volume name="Cladding1">
+  <materialref ref="Fiber_CLADDING1_PMMA"/>
+  <solidref ref="cladding1S"/>
+  <physvol>
+    <volumeref ref="Core"/>
+  </physvol>
+</volume>
+
+<volume name="Cladding2">
+  <materialref ref="Fiber_CLADDING2_FluorPMMA"/>
+  <solidref ref="cladding2S"/>
+  <physvol>
+    <volumeref ref="Cladding1"/>
+  </physvol>
+</volume>
+
+<volume name="Fiber">
+  <materialref ref="EJ500"/>
+  <solidref ref="fiberS"/>
+  <physvol>
+    <volumeref ref="Cladding2"/>
+  </physvol>
+  <physvol>
+    <volumeref ref="PMT"/>
+    <position unit="mm" z="-fiberL/2.+pmtZ/2."/>
+  </physvol>
+  <physvol>
+    <volumeref ref="Reflect"/>
+    <position unit="mm" z="fiberL/2.-pmtZ/2."/>
+  </physvol>
+</volume>
+
+
+<!-- Groove and extensions -->
+
+<volume name="Groove">
+  <materialref ref="EJ500" />
+  <solidref ref="grooveS" />
+  <physvol>
+    <volumeref ref="Fiber" />
+    <rotation name="fiberRot" x="90" unit="deg" />
+    <position unit="mm" z="grooveDepth/2-claddingR*1.1"/>
+  </physvol>
+</volume>
+
+<volume name="OmegaGroove-EJ500">
+  <materialref ref="EJ500" />
+  <solidref ref="omeGroSubFiber"/>
+</volume>
+
+<volume name="OmegaGroove-Air">
+  <materialref ref="AIR"/>
+  <solidref ref="omeGroSubFiber"/>
+</volume>
+
+<volume name="RoundGroove-EJ500">
+  <materialref ref="EJ500" />
+  <solidref ref="rouGroSubFiber"/>
+</volume>
+
+<volume name="RoundGroove-Air">
+  <materialref ref="AIR"/>
+  <solidref ref="rouGroSubFiber"/>
+</volume>
+
+<volume name="FullGroove-EJ500">
+  <materialref ref="EJ500" />
+  <solidref ref="fulGroSubFiber"/>
+</volume>
+
+<volume name="FullGroove-Air">
+  <materialref ref="AIR"/>
+  <solidref ref="fulGroSubFiber"/>
+</volume>
+
+
+<volume name="Test">
+  <!-- <solidref ref="scinSub2OmeGro" /> -->
+  <!-- <solidref ref="scinSub2RouGro" /> -->
+  <materialref ref="AIR"/>
+  <!-- <solidref ref="omeGroSubFiber"/> -->
+  <solidref ref="rouGroSubFiber"/>
+</volume>
+
+
+<volume name="FiberWithReflection">
+  <materialref ref="EJ500"/>
+  <solidref ref="fiberS"/>
+  <physvol>
+    <volumeref ref="Cladding2"/>
+  </physvol>
+  <physvol>
+    <volumeref ref="PMT"/>
+    <position unit="mm" z="-fiberL/2.+pmtZ/2."/>
+  </physvol>
+  <physvol>
+    <volumeref ref="Reflect"/>
+    <position unit="mm" z="fiberL/2.-pmtZ/2."/>
+  </physvol>
+</volume>
+
+
+
+<volume name="FiberWithoutReflection">
+  <materialref ref="EJ500"/>
+  <solidref ref="fiberS"/>
+  <physvol>
+    <volumeref ref="Cladding2"/>
+  </physvol>
+  <physvol>
+    <volumeref ref="PMT"/>
+    <position unit="mm" z="-fiberL/2.+pmtZ/2."/>
+  </physvol>
+</volume>
+
+<volume name="TestD">
+  <materialref ref="EJ500"/>
+  <!-- <solidref ref="omegaGrooveSolid"/> -->
+  <solidref ref="fulGroSubFiber"/>
+</volume>

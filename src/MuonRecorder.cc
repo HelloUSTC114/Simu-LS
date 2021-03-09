@@ -84,4 +84,6 @@ G4bool MuonRecorder::Record(const G4Track* theMuon){
 	fPX->push_back(pmu.x());
 	fPY->push_back(pmu.y());
 	fPZ->push_back(pmu.z());
+	
+	return true;
 }

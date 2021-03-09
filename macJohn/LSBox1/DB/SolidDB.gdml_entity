@@ -1,0 +1,130 @@
+<!-- this is a file defining G4VSolid in split.gdml -->
+<!-- it is _not_ a standalone GDML file -->
+<!-- This file should be referenced in <solids></solids>-->
+<!-- Dependencies : Config.gdml_entity-->
+
+
+<!-- Module Solids: -->
+<trd name="triBarModuleS" x1="0." x2="triBarModuleW" y1="fiberL" y2="fiberL" z="triBarModuleH" lunit= "mm" />
+<trd name = "triBarScintS" x1="0." x2="triBarScintW" y1="triangleBarL" y2="triangleBarL" z="triBarScintH" lunit= "mm"/>
+
+
+<box lunit="mm" name="detectorS" x="detectorX" y="detectorY" z="detectorZ" />
+<box lunit="mm" name="worldS" x="worldX" y="worldY" z="worldZ" />
+<box lunit="mm" name="grooveS" x="grooveWidth" y="grooveL" z="grooveDepth" />
+
+
+
+<!-- Round Groove Solids: Union of half circle and box -->
+<tube name="roundGrooveRoundPart" z="grooveL" rmax="grooveWidth/2.0" deltaphi="180" aunit="deg" lunit="mm"/>
+<box name="roundGrooveBoxPart" x="grooveWidth" y="grooveL" z="grooveDepth-grooveWidth/2.0" lunit="mm" />
+<union name="roundGrooveSolid">
+    <first ref="roundGrooveRoundPart"/>
+    <second ref="roundGrooveBoxPart"/>
+    <rotation unit="deg" x="90"/>
+    <position unit="mm" y="-grooveDepth+grooveWidth"/>
+</union>
+
+
+
+<!-- Omega Groove Solids: Union of large arc and box -->
+<!-- <cutTube name="omegaGrooveRoundPart" z="grooveL" rmax="grooveWidth/2.0" startphi="120" deltaphi="300" aunit="deg" lunit="mm"/> -->
+<!-- <cutTube name="omegaGrooveRoundPart" z="grooveL" rmax="grooveWidth/2.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm"/> -->
+<tube name="omegaGrooveRoundPart" z="grooveL" rmax="grooveWidth/2.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm"/>
+<!-- <box name="omegaGrooveBoxPart" x="grooveWidth/2.0" y="grooveL" z="grooveDepth-grooveWidth/2.0*1.866" lunit="mm" /> -->
+<box name="omegaGrooveBoxPart" x="omegaGrooveGap" y="grooveL" z="grooveDepth-grooveWidth/2.0" lunit="mm" />
+<union name="omegaGrooveSolid">
+    <first ref="omegaGrooveRoundPart"/>
+    <second ref="omegaGrooveBoxPart"/>
+    <rotation unit="deg" x="90"/>
+    <!-- <position unit="mm" y="grooveDepth/2-grooveWidth/2+grooveWidth/4*1.866"/> -->
+    <position unit="mm" y="grooveDepth/2-grooveWidth/2+grooveWidth/4"/>
+</union>
+
+
+
+
+<eltube lunit="mm" name="coreS" dx="coreR" dy="coreR" dz="fiberL/2-pmtZ-0.1" />
+<eltube lunit="mm" name="claddingS" dx="claddingR" dy="claddingR" dz="fiberL/2-pmtZ-0.1" />
+<eltube lunit="mm" name="cladding1S" dx="cladding1R" dy="cladding1R" dz="fiberL/2-pmtZ-0.1" />
+<eltube lunit="mm" name="cladding2S" dx="cladding2R" dy="cladding2R" dz="fiberL/2-pmtZ-0.1" />
+<eltube lunit="mm" name="fiberS" dx="fiberR" dy="fiberR" dz="fiberL/2" />
+
+<eltube lunit="mm" name="pmtS" dx="fiberR" dy="fiberR" dz="pmtZ/2." />
+
+<eltube lunit="mm" name="reflectS" dx="fiberR" dy="fiberR" dz="pmtZ/2." />
+
+
+<!-- Triangle bar solids: subtraction -->
+<!-- Scintillator subtract groove solids -->
+<subtraction name="scinSub1OmeGro">
+    <first ref="triBarScintS"/>
+    <second ref="omegaGrooveSolid"/>
+    <rotation unit="deg" x="90"/>
+    <position unit="mm" x="grooveOffset" z="triBarScintH/2-(grooveDepth-grooveWidth/2.0)"/>
+</subtraction>
+<subtraction name="scinSub2OmeGro">
+    <first ref="scinSub1OmeGro"/>
+    <second ref="omegaGrooveSolid"/>
+    <rotation unit="deg" x="90"/>
+    <position unit="mm" x="-grooveOffset" z="triBarScintH/2-(grooveDepth-grooveWidth/2.0)"/>
+</subtraction>
+
+
+<subtraction name="scinSub1RouGro">
+    <first ref="triBarScintS"/>
+    <second ref="roundGrooveSolid"/>
+    <rotation unit="deg" x="270"/>
+    <position unit="mm" x="grooveOffset" z="triBarScintH/2-(grooveDepth-grooveWidth/2.0)"/>
+</subtraction>
+<subtraction name="scinSub2RouGro">
+    <first ref="scinSub1RouGro"/>
+    <second ref="roundGrooveSolid"/>
+    <rotation unit="deg" x="270"/>
+    <position unit="mm" x="-grooveOffset" z="triBarScintH/2-(grooveDepth-grooveWidth/2.0)"/>
+</subtraction>
+
+<subtraction name="scinSubOmeGroCenter">
+    <first ref="triBarScintS"/>
+    <second ref="omegaGrooveSolid"/>
+    <rotation unit="deg" x="90"/>
+    <position unit="mm" z="triBarScintH/2-(grooveDepth-grooveWidth/2.0)"/>
+</subtraction>
+<subtraction name="scinSubRouGroCenter">
+    <first ref="triBarScintS"/>
+    <second ref="roundGrooveSolid"/>
+    <rotation unit="deg" x="270"/>
+    <position unit="mm" z="triBarScintH/2-(grooveDepth-grooveWidth/2.0)"/>
+</subtraction>
+
+<subtraction name="scinSub1FulGro">
+    <first ref="triBarScintS"/>
+    <second ref="omegaGrooveRoundPart"/>
+    <rotation unit="deg" x="90"/>
+    <position unit="mm" x="grooveOffset" z="triBarScintH/2-(grooveDepth-grooveWidth/2.0)"/>
+</subtraction>
+<subtraction name="scinSub2FulGro">
+    <first ref="scinSub1FulGro"/>
+    <second ref="omegaGrooveRoundPart"/>
+    <rotation unit="deg" x="90"/>
+    <position unit="mm" x="-grooveOffset" z="triBarScintH/2-(grooveDepth-grooveWidth/2.0)"/>
+</subtraction>
+
+
+
+
+<!-- Groove subtract fiber solids -->
+<subtraction name="omeGroSubFiber">
+    <first ref="omegaGrooveSolid"/>
+    <second ref="fiberS"/>
+</subtraction>
+
+<subtraction name="rouGroSubFiber">
+    <first ref="roundGrooveSolid"/>
+    <second ref="fiberS"/>
+</subtraction>
+
+<subtraction name="fulGroSubFiber">
+    <first ref="omegaGrooveRoundPart"/>
+    <second ref="fiberS"/>
+</subtraction>

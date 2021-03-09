@@ -1,0 +1,18 @@
+<!-- this is a file defining Configuration of matter in split.gdml -->
+<!-- it is _not_ a standalone GDML file -->
+<!-- This file should be refered in <define></define>-->
+
+<!-- Units : mm ,deg,g/cm3-->
+
+<!--Matter Configuration-->
+
+<variable name="LengthU" value="30" />
+<variable name="HeightU" value="5" />
+
+<variable name="WorldULength" value="50" />
+<variable name="WorldUHeight" value="6" />
+
+<!--Placement of matter-->
+
+<variable name="MatterX" value="20" />
+<variable name="MatterY" value="0" /> 

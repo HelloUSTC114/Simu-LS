@@ -1,0 +1,251 @@
+<!-- this is a file defining Surface Property Setup in split.gdml -->
+<!-- it is _not_ a standalone GDML file -->
+<!-- This file should be referenced in <structure></structure>-->
+<!-- Dependencies : .gdml/PropertyDB/MaterialDB/SurfaceDB.gdml_entity-->
+
+<auxiliary auxtype="Property">
+
+  <auxiliary auxtype="Skin" auxvalue="DetectorBorder">
+    <auxiliary auxtype="SurfaceName" auxvalue="Black" />
+    <auxiliary auxtype="LVname" auxvalue="Detector" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Black" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ModuleWrapper">
+    <auxiliary auxtype="SurfaceName" auxvalue="Tyvek" />
+    <auxiliary auxtype="LVname" auxvalue="Module" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Tyvek" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ScintSurface">
+    <auxiliary auxtype="SurfaceName" auxvalue="EJ200-polished" />
+    <auxiliary auxtype="LVname" auxvalue="Scintillator" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_EJ200-polished" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ScintGroove">
+    <auxiliary auxtype="SurfaceName" auxvalue="groove_surf"/>
+    <auxiliary auxtype="LVname" auxvalue="Groove" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Groove"/>
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="Photocathode">
+    <auxiliary auxtype="SurfaceName" auxvalue="photocath"/>
+    <auxiliary auxtype="LVname" auxvalue="PMT" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_SiPM_S13360_1375"/>
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="AgBorder">
+    <auxiliary auxtype="SurfaceName" auxvalue="agreflect"/>
+    <auxiliary auxtype="LVname" auxvalue="Reflect" />
+    <auxiliary auxtype="Material" auxvalue="Reflection_Ag"/>
+  </auxiliary>
+
+  <!-- <auxiliary auxtype="Skin" auxvalue="ReflectiveBoarder">
+    <auxiliary auxtype="SurfaceName" auxvalue="reflectiveBoarder"/>
+    <auxiliary auxtype="LVname" auxvalue="Reflect" />
+    <auxiliary auxtype="Material" auxvalue="Reflection_Ag"/>
+  </auxiliary> -->
+
+  <!-- Detector -->
+  <auxiliary auxtype="Skin" auxvalue="DetectorBorder">
+    <auxiliary auxtype="SurfaceName" auxvalue="Black" />
+    <auxiliary auxtype="LVname" auxvalue="Detector-Ome-EJ" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Black" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="DetectorBorder">
+    <auxiliary auxtype="SurfaceName" auxvalue="Black" />
+    <auxiliary auxtype="LVname" auxvalue="Detector-Ome-Air" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Black" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="DetectorBorder">
+    <auxiliary auxtype="SurfaceName" auxvalue="Black" />
+    <auxiliary auxtype="LVname" auxvalue="Detector-Rou-EJ" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Black" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="DetectorBorder">
+    <auxiliary auxtype="SurfaceName" auxvalue="Black" />
+    <auxiliary auxtype="LVname" auxvalue="Detector-Rou-Air" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Black" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="DetectorBorder">
+    <auxiliary auxtype="SurfaceName" auxvalue="Black" />
+    <auxiliary auxtype="LVname" auxvalue="Detector-Ome-EJ-Single" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Black" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="DetectorBorder">
+    <auxiliary auxtype="SurfaceName" auxvalue="Black" />
+    <auxiliary auxtype="LVname" auxvalue="Detector-Ome-Air-Single" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Black" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="DetectorBorder">
+    <auxiliary auxtype="SurfaceName" auxvalue="Black" />
+    <auxiliary auxtype="LVname" auxvalue="Detector-Rou-EJ-Single" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Black" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="DetectorBorder">
+    <auxiliary auxtype="SurfaceName" auxvalue="Black" />
+    <auxiliary auxtype="LVname" auxvalue="Detector-Rou-Air-Single" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Black" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="DetectorBorder">
+    <auxiliary auxtype="SurfaceName" auxvalue="Black" />
+    <auxiliary auxtype="LVname" auxvalue="Detector-Ful-EJ" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Black" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="DetectorBorder">
+    <auxiliary auxtype="SurfaceName" auxvalue="Black" />
+    <auxiliary auxtype="LVname" auxvalue="Detector-Ful-Air" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Black" />
+  </auxiliary>
+
+
+
+  <!-- Module -->
+
+  <auxiliary auxtype="Skin" auxvalue="ModuleWrapper">
+    <auxiliary auxtype="SurfaceName" auxvalue="Tyvek" />
+    <auxiliary auxtype="LVname" auxvalue="Module-Ome-EJ" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Tyvek" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ModuleWrapper">
+    <auxiliary auxtype="SurfaceName" auxvalue="Tyvek" />
+    <auxiliary auxtype="LVname" auxvalue="Module-Ome-Air" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Tyvek" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ModuleWrapper">
+    <auxiliary auxtype="SurfaceName" auxvalue="Tyvek" />
+    <auxiliary auxtype="LVname" auxvalue="Module-Rou-EJ" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Tyvek" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ModuleWrapper">
+    <auxiliary auxtype="SurfaceName" auxvalue="Tyvek" />
+    <auxiliary auxtype="LVname" auxvalue="Module-Rou-Air" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Tyvek" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ModuleWrapper">
+    <auxiliary auxtype="SurfaceName" auxvalue="Tyvek" />
+    <auxiliary auxtype="LVname" auxvalue="Module-Ome-EJ-Single" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Tyvek" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ModuleWrapper">
+    <auxiliary auxtype="SurfaceName" auxvalue="Tyvek" />
+    <auxiliary auxtype="LVname" auxvalue="Module-Ome-Air-Single" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Tyvek" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ModuleWrapper">
+    <auxiliary auxtype="SurfaceName" auxvalue="Tyvek" />
+    <auxiliary auxtype="LVname" auxvalue="Module-Rou-EJ-Single" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Tyvek" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ModuleWrapper">
+    <auxiliary auxtype="SurfaceName" auxvalue="Tyvek" />
+    <auxiliary auxtype="LVname" auxvalue="Module-Rou-Air-Single" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Tyvek" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ModuleWrapper">
+    <auxiliary auxtype="SurfaceName" auxvalue="Tyvek" />
+    <auxiliary auxtype="LVname" auxvalue="Module-Ful-EJ" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Tyvek" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ModuleWrapper">
+    <auxiliary auxtype="SurfaceName" auxvalue="Tyvek" />
+    <auxiliary auxtype="LVname" auxvalue="Module-Ful-Air" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Tyvek" />
+  </auxiliary>
+
+
+
+  <!-- Scintillator -->
+  <auxiliary auxtype="Skin" auxvalue="ScintSurface">
+    <auxiliary auxtype="SurfaceName" auxvalue="EJ200-polished" />
+    <auxiliary auxtype="LVname" auxvalue="ScinWithOme" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_EJ200-polished" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ScintSurface">
+    <auxiliary auxtype="SurfaceName" auxvalue="EJ200-polished" />
+    <auxiliary auxtype="LVname" auxvalue="ScinWithRou" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_EJ200-polished" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ScintSurface">
+    <auxiliary auxtype="SurfaceName" auxvalue="EJ200-polished" />
+    <auxiliary auxtype="LVname" auxvalue="ScinWithOmeCenter" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_EJ200-polished" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ScintSurface">
+    <auxiliary auxtype="SurfaceName" auxvalue="EJ200-polished" />
+    <auxiliary auxtype="LVname" auxvalue="ScinWithRouCenter" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_EJ200-polished" />
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ScintSurface">
+    <auxiliary auxtype="SurfaceName" auxvalue="EJ200-polished" />
+    <auxiliary auxtype="LVname" auxvalue="ScinWithFul" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_EJ200-polished" />
+  </auxiliary>
+
+
+
+  <!-- Groove -->
+  <auxiliary auxtype="Skin" auxvalue="ScintGroove">
+    <auxiliary auxtype="SurfaceName" auxvalue="groove_surf"/>
+    <auxiliary auxtype="LVname" auxvalue="OmegaGroove-EJ500" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Groove"/>
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ScintGroove">
+    <auxiliary auxtype="SurfaceName" auxvalue="groove_surf"/>
+    <auxiliary auxtype="LVname" auxvalue="OmegaGroove-Air" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Groove"/>
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ScintGroove">
+    <auxiliary auxtype="SurfaceName" auxvalue="groove_surf"/>
+    <auxiliary auxtype="LVname" auxvalue="RoundGroove-EJ500" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Groove"/>
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ScintGroove">
+    <auxiliary auxtype="SurfaceName" auxvalue="groove_surf"/>
+    <auxiliary auxtype="LVname" auxvalue="RoundGroove-Air" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Groove"/>
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ScintGroove">
+    <auxiliary auxtype="SurfaceName" auxvalue="groove_surf"/>
+    <auxiliary auxtype="LVname" auxvalue="FullGroove-EJ500" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Groove"/>
+  </auxiliary>
+
+  <auxiliary auxtype="Skin" auxvalue="ScintGroove">
+    <auxiliary auxtype="SurfaceName" auxvalue="groove_surf"/>
+    <auxiliary auxtype="LVname" auxvalue="FullGroove-Air" />
+    <auxiliary auxtype="Material" auxvalue="OpSurface_Groove"/>
+  </auxiliary>
+
+
+
+
+
+</auxiliary>

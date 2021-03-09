@@ -1,0 +1,10 @@
+# Geant4 Macro file for batch mode
+
+/process/em/verbose 0
+/analysis/verbose 1
+/run/verbose 2
+/run/initialize
+/process/optical/scintillation/setYieldFactor 1
+/CRTest/generator/trigger 1
+/CRTest/generator/range -1 1 -3.5 3.5 cm
+/run/beamOn 100
