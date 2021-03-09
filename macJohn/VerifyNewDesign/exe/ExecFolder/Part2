@@ -1,0 +1,43 @@
+
+    <variable name="triBarModuleW" value="20" />
+    <variable name="triBarModuleH" value="10" />
+    <variable name="triBarScintW" value="triBarModuleW-coatingThickness*2*(1.414+1)" />
+    <variable name="triBarScintH" value="triBarModuleH-coatingThickness*(1+1.414)" />
+    <variable name="triBarScintZ" value="coatingThickness*0.207" />
+
+
+    <variable name="fiberL" value="triangleBarL*1.1" />
+    <variable name="grooveL" value="triangleBarL"/>
+
+    <variable name="detectorX" value="triangleBarN0*triBarModuleW" />
+    <variable name="detectorY" value="fiberL" />
+    <variable name="detectorZ" value="triBarModuleH" />
+
+
+
+    <!-- This is only for the case where no Y dimension detector exist -->
+    <variable name="worldX" value="triBarModuleW*1.5" />
+    <variable name="worldY" value="fiberL*1.2" />
+    <variable name="worldZ" value="20" />
+    &Config;
+    &Property;
+  </define>
+
+  <materials>
+    &Material;
+  </materials>
+
+  <solids>
+    &Solid;
+    &Surface;
+  </solids>
+
+  <structure>
+    &Groove;
+    &Detector;
+
+
+    <volume name="World">
+      <materialref ref="AIR" />
+      <solidref ref="worldS" />
+      <physvol>

@@ -1,0 +1,9 @@
+<!-- this is a file defining G4VSolid in split.gdml -->
+<!-- it is _not_ a standalone GDML file -->
+<!-- This file should be referenced in <solids></solids>-->
+<!-- Dependencies : Config_matter.gdml_entity-->
+
+<box lunit="cm" name="MatterUR" x="LengthU" y="HeightU" z="HeightU" />
+<box lunit="cm" name="MatterUL" x="LengthU" y="HeightU" z="HeightU" />
+<box lunit="cm" name="MatterUD" x="LengthU" y="HeightU" z="HeightU" />
+<box lunit="cm" name="MatterWorld" x="WorldULength" y="WorldULength" z="WorldUHeight" />

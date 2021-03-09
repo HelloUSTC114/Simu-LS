@@ -1,0 +1,10 @@
+executable = ProcessFile.sh
+
+initial_dir=/home/john/Codes/SimuJohn/macJohn/PhotonYielding-PhaseII/exe/condor
+arguments = $(Process)
+
+error=err/PhotonYielding-err.$(Process)
+output=out/PhotonYielding-out.$(Process)
+log=log/PhotonYielding.log
+
+queue 36

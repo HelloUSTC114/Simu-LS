@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE gdml [
+  <!ENTITY Config SYSTEM "VariableConfig/Config.gdml_entity">
+<!ENTITY Property SYSTEM "DB/PropertyDB.gdml_entity">
+<!ENTITY Material SYSTEM "DB/MaterialDB.gdml_entity">
+<!ENTITY Solid SYSTEM "DB/SolidDB.gdml_entity">
+<!ENTITY Surface SYSTEM "DB/SurfaceDB.gdml_entity">
+<!ENTITY Surface_Setup SYSTEM "Surface/Surface_DefaultSetup.gdml_entity">
+<!ENTITY Surface_Property SYSTEM "Surface/Surface_DefaultProperty.gdml_entity">
+<!ENTITY Groove SYSTEM "Structure/Volume_Groove.gdml_entity">
+<!ENTITY Detector SYSTEM "Structure/Module_Scintillator.gdml_entity">
+]>
+
+<gdml xmlns:gdml="http://gdml.web.cern.ch/GDML/" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///schema/gdml.xsd">
+
+  <define>
+    <!-- <variable name="triangleBarL" value="700" /> -->
+
+    <!-- Groove Width -->
+    <variable name="grooveWidth" value="1.2"/>
+    <!-- Groove Depth -->
+    <variable name="grooveDepth" value="1.8"/>
+    <!-- omegaGrooveGap is useful for omega Groove only, represents air gap  -->
+    <variable name="omegaGrooveGap" value="grooveWidth/2"/>
+    <!-- groove offset only is useful while processing 2 grooves and will be modified very often -->
+    <variable name="grooveOffset" value="3"/>
+
+    <!-- Triangle Bar length -->
+    <variable name="triangleBarL" value="500" />
+    <!-- Total Triangle bars in one detector -->
+    <variable name="triangleBarN0" value="3" />
+    <!-- Coating Thickness -->
+    <variable name="coatingThickness" value="0.12" />
+
+
+    <variable name="triBarModuleW" value="20" />
+    <variable name="triBarModuleH" value="10" />
+    <variable name="triBarScintW" value="triBarModuleW-coatingThickness*2*(1.414+1)" />
+    <variable name="triBarScintH" value="triBarModuleH-coatingThickness*(1+1.414)" />
+    <variable name="triBarScintZ" value="coatingThickness*0.207" />
+
+    <variable name="fiberR" value="0.5"/>
+    <variable name="fiberL" value="triangleBarL*1.1" />
+
+    <variable name="grooveL" value="triangleBarL"/>
+
+
+    <variable name="detectorX" value="triangleBarN0*triBarModuleW" />
+    <variable name="detectorY" value="fiberL" />
+    <variable name="detectorZ" value="triBarModuleH" />
+
+
+
+    <!-- This is only for the case where no Y dimension detector exist -->
+    <variable name="worldX" value="detectorX*1.2" />
+    <variable name="worldY" value="fiberL*1" />
+    <!-- <variable name="worldY" value="detectorX*1.2" /> -->
+    <variable name="worldZ" value="20" />
+    &Config;
+    &Property;
+  </define>
+
+  <materials>
+    &Material;
+  </materials>
+
+  <solids>
+    &Solid;
+    &Surface;
+  </solids>
+
+  <structure>
+    &Groove;
+    &Detector;
+
+                        <!-- <volume name="Detector">
+      <materialref ref="AIR" />
+      <solidref ref="detectorS" />
+      <physvol>
+      <volumeref ref="Detector-Ome-Air"/>
+      </physvol>
+    </volume> -->
+
+    <volume name="World">
+      <materialref ref="AIR" />
+      <solidref ref="worldS" />
+      <physvol>
+        <!-- <volumeref ref="Detector" /> -->
+        <!-- <volumeref ref="Detector-Origin" /> -->
+        <!-- <volumeref ref="Module-Ome-EJ" /> -->
+        <!-- <volumeref ref="Fiber" /> -->
+        <volumeref ref="Module" />
+        <!-- <volumeref ref="Detector-Ome-EJ-Single" /> -->
+        <!-- <volumeref ref="Detector-Ome-EJ" /> -->
+      </physvol>
+    </volume>
+
+    &Surface_Setup;
+    
+  </structure>
+
+  <userinfo>
+    &Surface_Property;
+  </userinfo>
+
+  <setup name="System_TriangleBar" version="2">
+    <world ref="World" />
+  </setup>
+
+</gdml>

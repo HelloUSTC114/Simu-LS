@@ -1,0 +1,179 @@
+<!-- this is a file defining Surface Setup in split.gdml -->
+<!-- it is _not_ a standalone GDML file -->
+<!-- This file should be referenced in <structure></structure>-->
+<!-- Dependencies : .gdml/PropertyDB/MaterialDB/SurfaceDB.gdml_entity-->
+
+<!-- Detector surfaces -->
+<skinsurface name="detector_wrap" surfaceproperty="Black">
+  <volumeref ref="Detector"/>
+</skinsurface>
+
+<skinsurface name="detector_wrap" surfaceproperty="Black">
+  <volumeref ref="Detector-Ome-EJ"/>
+</skinsurface>
+
+<skinsurface name="detector_wrap" surfaceproperty="Black">
+  <volumeref ref="Detector-Ome-Air"/>
+</skinsurface>
+
+<skinsurface name="detector_wrap" surfaceproperty="Black">
+  <volumeref ref="Detector-Rou-EJ"/>
+</skinsurface>
+
+<skinsurface name="detector_wrap" surfaceproperty="Black">
+  <volumeref ref="Detector-Rou-Air"/>
+</skinsurface>
+
+<skinsurface name="detector_wrap" surfaceproperty="Black">
+  <volumeref ref="Detector-Ome-EJ-Single"/>
+</skinsurface>
+
+<skinsurface name="detector_wrap" surfaceproperty="Black">
+  <volumeref ref="Detector-Ome-Air-Single"/>
+</skinsurface>
+
+<skinsurface name="detector_wrap" surfaceproperty="Black">
+  <volumeref ref="Detector-Rou-EJ-Single"/>
+</skinsurface>
+
+<skinsurface name="detector_wrap" surfaceproperty="Black">
+  <volumeref ref="Detector-Rou-Air-Single"/>
+</skinsurface>
+
+<skinsurface name="detector_wrap" surfaceproperty="Black">
+  <volumeref ref="Detector-Ful-EJ"/>
+</skinsurface>
+
+<skinsurface name="detector_wrap" surfaceproperty="Black">
+  <volumeref ref="Detector-Ful-Air"/>
+</skinsurface>
+
+
+
+<!-- Module surfaces -->
+<skinsurface name="module_surf" surfaceproperty="Tyvek">
+  <volumeref ref="Module"/>
+</skinsurface>
+
+<skinsurface name="module_surf" surfaceproperty="Tyvek">
+  <volumeref ref="Module-Ome-EJ"/>
+</skinsurface>
+
+<skinsurface name="module_surf" surfaceproperty="Tyvek">
+  <volumeref ref="Module-Ome-Air"/>
+</skinsurface>
+
+<skinsurface name="module_surf" surfaceproperty="Tyvek">
+  <volumeref ref="Module-Rou-EJ"/>
+</skinsurface>
+
+<skinsurface name="module_surf" surfaceproperty="Tyvek">
+  <volumeref ref="Module-Rou-Air"/>
+</skinsurface>
+
+<skinsurface name="module_surf" surfaceproperty="Tyvek">
+  <volumeref ref="Module-Ome-EJ-Single"/>
+</skinsurface>
+
+<skinsurface name="module_surf" surfaceproperty="Tyvek">
+  <volumeref ref="Module-Ome-Air-Single"/>
+</skinsurface>
+
+<skinsurface name="module_surf" surfaceproperty="Tyvek">
+  <volumeref ref="Module-Rou-EJ-Single"/>
+</skinsurface>
+
+<skinsurface name="module_surf" surfaceproperty="Tyvek">
+  <volumeref ref="Module-Rou-Air-Single"/>
+</skinsurface>
+
+<skinsurface name="module_surf" surfaceproperty="Tyvek">
+  <volumeref ref="Module-Ful-EJ"/>
+</skinsurface>
+
+<skinsurface name="module_surf" surfaceproperty="Tyvek">
+  <volumeref ref="Module-Ful-Air"/>
+</skinsurface>
+
+
+
+
+
+<!-- Scintillator surfaces -->
+<skinsurface name="scint_skin" surfaceproperty="EJ200-polished">
+  <volumeref ref="Scintillator"/>
+</skinsurface>
+
+<skinsurface name="scint_skin" surfaceproperty="EJ200-polished">
+  <volumeref ref="ScinWithOme"/>
+</skinsurface>
+
+<skinsurface name="scint_skin" surfaceproperty="EJ200-polished">
+  <volumeref ref="ScinWithRou"/>
+</skinsurface>
+
+<skinsurface name="scint_skin" surfaceproperty="EJ200-polished">
+  <volumeref ref="ScinWithOmeCenter"/>
+</skinsurface>
+
+<skinsurface name="scint_skin" surfaceproperty="EJ200-polished">
+  <volumeref ref="ScinWithRouCenter"/>
+</skinsurface>
+
+<skinsurface name="scint_skin" surfaceproperty="EJ200-polished">
+  <volumeref ref="ScinWithFul"/>
+</skinsurface>
+
+
+
+<!-- Groove Surfaces -->
+<skinsurface name="groove_border" surfaceproperty="groove_surf">
+  <volumeref ref="Groove"/>
+</skinsurface>
+
+<skinsurface name="groove_border" surfaceproperty="groove_surf">
+  <volumeref ref="OmegaGroove-EJ500"/>
+</skinsurface>
+
+<skinsurface name="groove_border" surfaceproperty="groove_surf">
+  <volumeref ref="OmegaGroove-Air"/>
+</skinsurface>
+
+<skinsurface name="groove_border" surfaceproperty="groove_surf">
+  <volumeref ref="RoundGroove-EJ500"/>
+</skinsurface>
+
+<skinsurface name="groove_border" surfaceproperty="groove_surf">
+  <volumeref ref="RoundGroove-Air"/>
+</skinsurface>
+
+<skinsurface name="groove_border" surfaceproperty="groove_surf">
+  <volumeref ref="FullGroove-EJ500"/>
+</skinsurface>
+
+<skinsurface name="groove_border" surfaceproperty="groove_surf">
+  <volumeref ref="FullGroove-Air"/>
+</skinsurface>
+
+
+
+
+<skinsurface name="pmt_skin" surfaceproperty="photocath">
+  <volumeref ref="PMT"/>
+</skinsurface>
+
+<skinsurface name="fiber_skin" surfaceproperty="fiber_surf">
+  <volumeref ref="Cladding2"/>
+</skinsurface>
+
+<skinsurface name="fiber_inner" surfaceproperty="default">
+  <volumeref ref="Cladding1"/>
+</skinsurface>
+
+<skinsurface name="fiber_skin" surfaceproperty="default">
+  <volumeref ref="Core"/>
+</skinsurface>
+
+<skinsurface name="reflect_skin" surfaceproperty="agreflect">
+  <volumeref ref="Reflect" />
+</skinsurface>

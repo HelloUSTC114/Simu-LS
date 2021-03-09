@@ -1,0 +1,41 @@
+<!-- this is a file defining Slab Design (G4LogicalVolume) in split.gdml -->
+<!-- it is _not_ a standalone GDML file -->
+<!-- This file should be referenced in <structure></structure>-->
+<!-- Dependencies : Config_Matter/Material_matterDB/Solid_matter.gdml_entity-->
+
+<!--Structure : Matter<-World<-box-->
+
+<volume name="MatterR">
+  <materialref ref="G4_Pb" />
+  <solidref ref="MatterUR" />
+</volume>
+
+<volume name="MatterL">
+  <materialref ref="G4_Pb" />
+  <solidref ref="MatterUL" />
+</volume>
+
+<volume name="MatterD">
+  <materialref ref="G4_Pb" />
+  <solidref ref="MatterUD" />
+</volume>
+
+ <volume name="Matter">
+   <materialref ref="G4_AIR" />
+   <solidref ref="MatterWorld" />
+   <physvol>
+     <volumeref ref="MatterD"/> 
+     <position unit="cm" y="-LengthU/2.+HeightU/2." />
+   </physvol>
+    <physvol>
+     <volumeref ref="MatterR" />
+     <position unit="cm" x="LengthU/2.+HeightU/2." />
+     <rotation z="90" unit="deg" />
+   </physvol>
+    <physvol>
+     <volumeref ref="MatterD" />
+     <position unit="cm" x="-LengthU/2.-HeightU/2." />
+     <rotation z="270" unit="deg" />
+   </physvol>
+
+</volume>

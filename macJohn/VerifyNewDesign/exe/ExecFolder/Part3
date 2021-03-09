@@ -1,0 +1,16 @@
+      </physvol>
+    </volume>
+
+    &Surface_Setup;
+    
+  </structure>
+
+  <userinfo>
+    &Surface_Property;
+  </userinfo>
+
+  <setup name="System_TriangleBar" version="2">
+    <world ref="World" />
+  </setup>
+
+</gdml>

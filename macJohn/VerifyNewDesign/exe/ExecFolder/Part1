@@ -1,0 +1,22 @@
+
+<gdml xmlns:gdml="http://gdml.web.cern.ch/GDML/" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///schema/gdml.xsd">
+
+  <define>
+    <!-- <variable name="triangleBarL" value="700" /> -->
+    <variable name="triangleBarL" value="700" />
+    <variable name="triangleBarN0" value="25" />
+
+    <variable name="coatingThickness" value="0.12" />
+    <variable name="triBarModuleW" value="20" />
+    <variable name="triBarModuleH" value="10" />
+    <variable name="triBarScintW" value="triBarModuleW-coatingThickness*2*(1.414+1)" />
+    <variable name="triBarScintH" value="triBarModuleH-coatingThickness*(1+1.414)" />
+    <variable name="triBarScintZ" value="coatingThickness*0.207" />
+
+    <variable name="fiberR" value="0.5"/>
+    <variable name="fiberL" value="triangleBarL*1.1" />
+    <variable name="fiberN" value="-1"/>
+    <variable name="fiberOffset" value="-1" />
+
+    <variable name="grooveL" value="triangleBarL"/>

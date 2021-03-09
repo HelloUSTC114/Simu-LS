@@ -1,0 +1,41 @@
+<!-- this is a file defining Configuration in split.gdml -->
+<!-- it is _not_ a standalone GDML file -->
+<!-- This file should be refered in <define></define>-->
+
+<!-- Units : mm, deg, g/cm3 -->
+
+<!-- Detector Configuration -->
+	<!-- Detector Box Size defined in .gdml -->
+
+<!-- WLS Fiber Configuration-->
+	<!-- Fiber Length & Radius defined in .gdml -->
+<variable name="coreR" value="fiberR*0.95"/>
+<variable name="claddingR" value="fiberR"/>
+<variable name="cladding1R" value="fiberR*0.98"/>
+<variable name="cladding2R" value="fiberR"/>
+	<!-- Groove Size defined in .gdml -->
+
+<!-- PMT Configuration-->
+<variable name="pmtZ" value="0.05"/>
+
+<!-- Placement -->
+  <!-- Detector Position defined in .gdml-->
+  
+  <!-- Fiber Number & Offset defined in .gdml -->
+<variable name="fiberX" value="-detectorX/2+fiberOffset" />
+<variable name="fiberXstep" value="(detectorX-2*fiberOffset)/(fiberN-1)" />
+<rotation name="fiberRotX" x="90" unit="deg" />
+<rotation name="fiberRotY" y="90" unit="deg" />
+
+<!-- World Configuration-->
+	<!-- World Box Size defined in .gdml -->
+
+<!-- Others-->
+<variable name="iDetector" value="0" />
+<variable name="idxX" value="0" />
+<variable name="idxY" value="0" />
+
+<variable name="idxX1" value="0" />
+<variable name="idxY1" value="0" />
+<variable name="idxX2" value="0" />
+<variable name="idxY2" value="0" />

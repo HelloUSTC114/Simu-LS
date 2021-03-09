@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE gdml [
+  <!ENTITY Config SYSTEM "/home/john/Codes/SimuJohn/macJohn/VerifyNewDesign/exe/../src//VariableConfig/Config.gdml_entity">
+<!ENTITY Property SYSTEM "/home/john/Codes/SimuJohn/macJohn/VerifyNewDesign/exe/../src//DB/PropertyDB.gdml_entity">
+<!ENTITY Material SYSTEM "/home/john/Codes/SimuJohn/macJohn/VerifyNewDesign/exe/../src//DB/MaterialDB.gdml_entity">
+<!ENTITY Solid SYSTEM "/home/john/Codes/SimuJohn/macJohn/VerifyNewDesign/exe/../src//DB/SolidDB.gdml_entity">
+<!ENTITY Surface SYSTEM "/home/john/Codes/SimuJohn/macJohn/VerifyNewDesign/exe/../src//DB/SurfaceDB.gdml_entity">
+<!ENTITY Surface_Setup SYSTEM "/home/john/Codes/SimuJohn/macJohn/VerifyNewDesign/exe/../src//Surface/Surface_DefaultSetup.gdml_entity">
+<!ENTITY Surface_Property SYSTEM "/home/john/Codes/SimuJohn/macJohn/VerifyNewDesign/exe/../src//Surface/Surface_DefaultProperty.gdml_entity">
+<!ENTITY Groove SYSTEM "/home/john/Codes/SimuJohn/macJohn/VerifyNewDesign/exe/../src//Structure/Volume_Groove.gdml_entity">
+<!ENTITY Detector SYSTEM "/home/john/Codes/SimuJohn/macJohn/VerifyNewDesign/exe/../src//Structure/Module_Scintillator.gdml_entity">
+]>
+<gdml xmlns:gdml="http://gdml.web.cern.ch/GDML/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///schema/gdml.xsd">
+
+  <define>
+
+    <!-- Groove Width -->
+    <variable name="grooveWidth" value="1.1"/>
+    <!-- Groove Depth -->
+    <variable name="grooveDepth" value="2.5"/>
+    <!-- omegaGrooveGap is useful for omega Groove only, represents air gap  -->
+    <variable name="omegaGrooveGap" value="0.6"/>
+    <!-- groove offset only is useful while processing 2 grooves and will be modified very often -->
+    <variable name="grooveOffset" value="3.0"/>
+    <!-- Triangle Bar length -->
+    <variable name="triangleBarL" value="500" />
+    <!-- Total Triangle bars in one detector -->
+    <variable name="triangleBarN0" value="25" />
+    <!-- Coating Thickness -->
+    <variable name="coatingThickness" value="0.12" />
+
+    <!-- Fiber Radius -->
+    <variable name="fiberR" value="0.5"/>
+
+
+    <variable name="triBarModuleW" value="20" />
+    <variable name="triBarModuleH" value="10" />
+    <variable name="triBarScintW" value="triBarModuleW-coatingThickness*2*(1.414+1)" />
+    <variable name="triBarScintH" value="triBarModuleH-coatingThickness*(1+1.414)" />
+    <variable name="triBarScintZ" value="coatingThickness*0.207" />
+
+
+    <variable name="fiberL" value="triangleBarL*1.1" />
+    <variable name="grooveL" value="triangleBarL"/>
+
+    <variable name="detectorX" value="triangleBarN0*triBarModuleW" />
+    <variable name="detectorY" value="fiberL" />
+    <variable name="detectorZ" value="triBarModuleH" />
+
+
+
+    <!-- This is only for the case where no Y dimension detector exist -->
+    <variable name="worldX" value="triBarModuleW*3" />
+    <variable name="worldY" value="fiberL*1.2" />
+    <variable name="worldZ" value="20" />
+    &Config;
+    &Property;
+  </define>
+
+  <materials>
+    &Material;
+  </materials>
+
+  <solids>
+    &Solid;
+    &Surface;
+  </solids>
+
+  <structure>
+    &Groove;
+    &Detector;
+
+
+    <volume name="World">
+      <materialref ref="AIR" />
+      <solidref ref="worldS" />
+      <physvol copynumber="0">
+        <volumeref ref="Module-Ome-EJ" />
+        <position unit="mm" x="-10" />
+      </physvol>
+      <!-- <volumeref ref="Module-Ome-EJ" /> -->
+      <physvol copynumber="1">
+        <volumeref ref="Module-Ome-EJ"/>
+        <position unit="mm" x="0" />
+        <rotation y="180" unit="degree"/>
+      </physvol>
+      <physvol copynumber="2">
+        <volumeref ref="Module-Ome-EJ" />
+        <position unit="mm" x="10" />
+      </physvol>
+    </volume>
+
+    &Surface_Setup;
+    
+  </structure>
+
+  <userinfo>
+    &Surface_Property;
+  </userinfo>
+
+  <setup name="System_TriangleBar" version="2">
+    <world ref="World" />
+  </setup>
+
+</gdml>

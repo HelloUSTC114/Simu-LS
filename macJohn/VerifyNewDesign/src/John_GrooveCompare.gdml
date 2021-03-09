@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE gdml [
+  <!ENTITY Config SYSTEM "VariableConfig/Config.gdml_entity">
+<!ENTITY Property SYSTEM "DB/PropertyDB.gdml_entity">
+<!ENTITY Material SYSTEM "DB/MaterialDB.gdml_entity">
+<!ENTITY Solid SYSTEM "DB/SolidDB.gdml_entity">
+<!ENTITY Surface SYSTEM "DB/SurfaceDB.gdml_entity">
+<!ENTITY Surface_Setup SYSTEM "Surface/Surface_DefaultSetup.gdml_entity">
+<!ENTITY Surface_Property SYSTEM "Surface/Surface_DefaultProperty.gdml_entity">
+<!ENTITY Groove SYSTEM "Structure/Volume_Groove.gdml_entity">
+<!ENTITY Detector SYSTEM "Structure/Module_Scintillator.gdml_entity">
+]>
+
+<gdml xmlns:gdml="http://gdml.web.cern.ch/GDML/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="file:///schema/gdml.xsd">
+
+  <define>
+    <variable name="triangleBarL" value="150" />
+    <variable name="triangleBarN0" value="3" />
+    
+    <variable name="coatingThickness" value="0.12" />
+    <variable name="triBarModuleW" value="20" />
+    <variable name="triBarModuleH" value="10" />
+    <variable name="triBarScintW" value="triBarModuleW-coatingThickness*2*(1.414+1)" />
+    <variable name="triBarScintH" value="triBarModuleH-coatingThickness*(1+1.414)" />
+    <variable name="triBarScintZ" value="coatingThickness*0.207" />
+    
+    <variable name="fiberR" value="0.5"/>
+    <variable name="fiberL" value="triangleBarL*1.1" />
+    <variable name="fiberN" value="-1"/>
+    <variable name="fiberOffset" value="-1" />
+
+    <variable name="grooveWidth" value="1.2"/>
+    <variable name="grooveDepth" value="1.8"/>
+    <variable name="grooveL" value="triangleBarL"/>
+
+    <variable name="grooveOffset" value="5"/>
+    <variable name="detectorX" value="triangleBarL" />
+    <variable name="detectorY" value="triangleBarL" />
+    <variable name="detectorZ" value="triBarModuleH*2" />
+
+    <!-- <matrix name="detectorPosZ" coldim="1" values="-1000 -250 250 1000" /> -->
+    
+    <variable name="worldX" value="detectorX*1.2" />
+    <variable name="worldY" value="fiberL*1.2" />
+    <variable name="worldZ" value="50" />
+    &Config;
+    &Property;
+  </define>
+
+  <materials>
+    &Material;
+  </materials>
+
+  <solids>
+    <!-- <trd name="triBarModuleS"  x1="0." x2="triBarModuleW" y1="triangleBarL" y2="triangleBarL" z="triBarModuleH" lunit= "mm" /> -->
+    <!-- <trd name = "triBarScintS"  x1="0." x2="triBarScintW" y1="triangleBarL" y2="triangleBarL" z="triBarScintH" lunit= "mm"/> -->
+    &Solid;
+    &Surface;
+  </solids>
+
+  <structure>
+    &Groove;
+    &Detector;
+
+    <volume name="World">
+      <materialref ref="AIR" />
+      <solidref ref="worldS" />
+      <physvol>
+        <!-- <volumeref ref="Detector" /> -->
+        <volumeref ref="Module" />
+        <!-- <volumeref ref="Cladding2" /> -->
+        <!-- <volumeref ref="Scintillator" /> -->
+      </physvol>
+    </volume>
+
+    &Surface_Setup;
+    
+  </structure>
+
+  <userinfo>
+    &Surface_Property;
+  </userinfo>
+
+  <setup name="System_TriangleBar" version="2" >
+    <world ref="World" />
+  </setup>
+
+</gdml>
