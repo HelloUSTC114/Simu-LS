@@ -14,3 +14,6 @@
 #
 # Visualization setting
 /control/execute ./mac/vis.mac
+
+# Set default beam generator
+/CRTest/generator/set beam

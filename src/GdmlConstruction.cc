@@ -37,7 +37,7 @@ GdmlConstruction::GdmlConstruction(G4String gdmlFileName)
 {
 	fGdml = new G4GDMLParser;
 	fGdmlFileName = gdmlFileName;
-	this->Init();
+	// this->Init();
 }
 
 GdmlConstruction::~GdmlConstruction()
@@ -174,7 +174,7 @@ void GdmlConstruction::PrintAuxiliary(
 			ReadProperty(auxIter->auxList, prefix + " + ");
 		else
 			PrintAuxiliary(auxIter->auxList, prefix + " | ");
-	} // print contend in <aux></aux>
+	} // print content in <aux></aux>
 	return;
 }
 
@@ -299,6 +299,15 @@ G4bool GdmlConstruction::ReadBorderProperty(
 				G4PhysicalVolumeStore::GetInstance()->GetVolume(auxIter->value);
 			if (!physvol)
 			{
+				std::cout << "[#] ERROR - Physical Volume NOT FOUND" << std::endl;
+				std::cout << auxIter->value << std::endl;
+				std::cout << "PV list: " << std::endl;
+				auto temp = G4PhysicalVolumeStore::GetInstance();
+				for (int i = 0; i < temp->size(); i++)
+				{
+					std::cout << temp->at(i)->GetName() << std::endl;
+				}
+
 				G4cerr << "[#] ERROR - Physical Volume NOT FOUND" << G4endl;
 				return false;
 			}
@@ -333,16 +342,23 @@ G4bool GdmlConstruction::ReadBorderProperty(
 
 	G4LogicalBorderSurface *Surface = NULL;
 	G4OpticalSurface *OpSurf = NULL;
-	Surface = G4LogicalBorderSurface::GetSurface(thePrePV, thePostPV);
-	if (Surface)
-		OpSurf =
-			dynamic_cast<G4OpticalSurface *>(Surface->GetSurfaceProperty());
-	if (OpSurf && !OpSurf->GetMaterialPropertiesTable())
-	{
-		OpSurf->SetMaterialPropertiesTable(
-			matptr->GetMaterialPropertiesTable());
-		assert(SurfaceName == OpSurf->GetName());
-	}
+
+	OpSurf = new G4OpticalSurface(SurfaceName);
+	Surface = new G4LogicalBorderSurface(SurfaceName, thePrePV, thePostPV, OpSurf);
+	OpSurf->SetMaterialPropertiesTable(matptr->GetMaterialPropertiesTable());
+
+	// if (Surface)
+	// 	OpSurf =
+	// 		dynamic_cast<G4OpticalSurface *>(Surface->GetSurfaceProperty());
+	// if (OpSurf && !OpSurf->GetMaterialPropertiesTable())
+	// {
+	// 	OpSurf->SetMaterialPropertiesTable(
+	// 		matptr->GetMaterialPropertiesTable());
+
+	// 	std::cout << SurfaceName << '\t' << OpSurf->GetName() << std::endl;
+	// 	assert(SurfaceName == OpSurf->GetName());
+	// }
+
 
 	return true;
 }

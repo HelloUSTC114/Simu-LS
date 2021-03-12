@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE gdml [
+<!ENTITY Property SYSTEM "DB/PropertyDB.gdml_entity">
+<!ENTITY Material SYSTEM "DB/MaterialDB.gdml_entity">
+]>
+
+<gdml xmlns:gdml="http://gdml.web.cern.ch/GDML/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///schema/gdml.xsd">
+
+    <define>
+        <!-- Height of the box -->
+        <variable name="BoxHeight" value="10"/>
+
+        <!-- Thickness of box -->
+        <variable name="Thickness" value="5"/>
+        <!-- Length of the inner box  -->
+        <variable name="BoxLength" value = "250"/>
+        <variable name="BoxWidth" value="500"/>
+
+        <!-- Width for connecting -->
+        <variable name="ConnectLength" value="0"/>
+
+        <!-- Thickness of part -->
+        <variable name="PartThick" value = "1"/>
+
+        <!-- Loop -->
+        <variable name="Loop1" value = "0"/>
+        <variable name="Loop2" value = "0"/>
+
+
+        <!-- Partition rotation -->
+        <rotation name="partR1" y="180" unit="degree"/>
+        <position name="partP1" x="0" y="0" z="1.4142136/2*BoxHeight-0.25*PartThick" unit="mm"/>
+
+        <rotation name="partR2" y="0" unit="degree"/>
+        <position name="partP2" x="0" y="0" z="-1.4142136/2*BoxHeight+0.25*PartThick" unit="mm"/>
+
+
+
+        &Property;
+
+    </define>
+
+    <materials>
+        &Material;
+    </materials>
+
+    <solids>
+        <box aunit="radian" lunit="mm" name="worldS" x="1000" y="1000" z="1000" />
+
+        <!-- <para aunit="degree" lunit="mm" name="partS1" x="1.4142136*PartThick" y="BoxLength-ConnectLength" z="BoxHeight" alpha="0" theta="45" phi="0"/> -->
+
+        <box name="partS1" x="PartThick" y="BoxLength-ConnectLength" z="1.4142136*BoxHeight-PartThick"/>
+        <trd name="partS2" x1="0" y1="BoxLength-ConnectLength" x2="PartThick" y2="BoxLength-ConnectLength" z="1/2*PartThick"/>
+
+        <union name="partSS1">
+            <first ref="partS1"/>
+            <rotationref ref="partR1"/>
+            <positionref ref="partP1"/>
+            <second ref="partS2"/>
+        </union>
+
+        <union name="partSS">
+            <first ref="partSS1"/>
+            <rotationref ref="partR2"/>
+            <positionref ref="partP2"/>
+            <second ref="partS2"/>
+        </union>
+
+
+        <box aunit="radian" lunit="mm" name="boxinS" x="BoxWidth" y="BoxLength" z="BoxHeight+0.0001*Thickness"/>
+        <box aunit="radian" lunit="mm" name="boxoutS" x="BoxWidth+Thickness*2" y="BoxLength+Thickness*2" z="BoxHeight+Thickness*2"/>
+        <subtraction name="boxS">
+            <first ref="boxoutS"/>
+            <second ref="boxinS"/>
+        </subtraction>
+
+        <!-- Surface definition -->
+        <opticalsurface name="scint_surf" model="unified" finish="ground" type="dielectric_dielectric" value="0.12"/>
+
+        <opticalsurface name="reflective" model="unified" finish="ground" type="dielectric_metal" value="0.2" />
+
+        <opticalsurface name="part_surf" model="unified" finish="ground" type="dielectric_metal" value="0.2"/>
+
+
+
+    </solids>
+
+    <structure>
+
+        <volume name="Partition">
+            <materialref ref="PMMA"/>
+            <solidref ref="partSS"/>
+        </volume>
+
+
+
+        <volume name="Box">
+            <materialref ref="PMMA"/>
+            <solidref ref="boxS"/>
+        </volume>
+
+
+        <volume name="Scintillator">
+            <!-- <materialref ref="G4_AIR"/> -->
+            <materialref ref="EJ200_PVT"/>
+            <solidref ref="boxinS"/>
+
+
+            <loop for="Loop1" to="BoxWidth/BoxHeight/2-3" step="1">
+                <physvol copynumber="Loop1*2">
+                    <volumeref ref="Partition"/>
+                    <position x="-BoxWidth/2+2*BoxHeight+BoxHeight*Loop1*2" y="-ConnectLength/2" z="0"/>
+                    <rotation y="45" unit="degree"/>
+
+                </physvol>
+            </loop>
+            
+
+            <loop for="Loop2" to="BoxWidth/BoxHeight/2-3" step = "1">
+                <physvol copynumber="Loop2*2+1">
+                    <volumeref ref="Partition"/>
+                    <position x="-BoxWidth/2+2*BoxHeight+BoxHeight*(Loop2*2+1)" y="-ConnectLength/2" z="0"/>
+                    <rotation y="-45" unit="degree"/>
+
+                </physvol>
+            </loop>
+<!-- 
+            <physvol copynumber="0">
+                <volumeref ref="Partition"/>
+                <position x="0" y="-ConnectLength/2" z="0"/>
+                <rotation y="45" unit="degree"/>
+            </physvol>
+            <physvol copynumber="1">
+                <volumeref ref="Partition"/>
+                <position x="10" y="-ConnectLength/2" z="0"/>
+                <rotation y="-45" unit="degree"/>
+            </physvol>
+
+            <physvol copynumber="0">
+                <volumeref ref="Partition"/>
+                <position x="20" y="-ConnectLength/2" z="0"/>
+                <rotation y="45" unit="degree"/>
+            </physvol>
+
+            <physvol copynumber="2">
+                <volumeref ref="Partition"/>
+                <position x="30" y="-ConnectLength/2" z="0"/>
+                <rotation y="-45" unit="degree"/>
+            </physvol> -->
+
+        </volume>
+
+        <volume name="Detector">
+            <materialref ref="AIR"/>
+            <solidref ref="boxoutS"/>
+
+            <physvol>
+                <volumeref ref="Scintillator"/>
+            </physvol>
+
+
+        </volume>
+
+        <volume name="World">
+            <materialref ref="AIR"/>
+            <solidref ref="worldS"/>
+
+            <physvol>
+                <volumeref ref="Detector"/>
+                <!-- <volumeref ref="Partition"/> -->
+            </physvol>
+        </volume>
+
+        <!-- Surface setup -->
+        <skinsurface name="scint_coat" surfaceproperty="reflective">
+            <volumeref ref="Scintillator"/>
+        </skinsurface>
+        <skinsurface name="scint_coat" surfaceproperty="reflective">
+            <volumeref ref="Detector"/>
+        </skinsurface>
+
+        <!-- Here cancled definition of partition surface, use scintillator surface instead, so as to induce calculation time with the same simulation condition -->
+
+        <!-- <skinsurface name="part_wrap" surfaceproperty="part_surf">
+            <volumeref ref="Partition"/>
+        </skinsurface>
+        <skinsurface name="part_wrap" surfaceproperty="part_surf">
+            <volumeref ref="PartitionIn"/>
+        </skinsurface> -->
+
+    </structure>
+
+
+    <userinfo>
+        <auxiliary auxtype="Property">
+            <!-- Surface property -->
+            <!-- <auxiliary auxtype="Skin" auxvalue="BoxCoating">
+                <auxiliary auxtype="SurfaceName" auxvalue="scint_surf"/>
+                <auxiliary auxtype="LVname" auxvalue="Box"/>
+                <auxiliary auxtype="Material" auxvalue="OpSurface_EJ200-rough"/>
+            </auxiliary> -->
+
+            <!-- <auxiliary auxtype="Skin" auxvalue="PartCoating">
+                <auxiliary auxtype="SurfaceName" auxvalue="scint_surf"/>
+                <auxiliary auxtype="LVname" auxvalue="Partition"/>
+                <auxiliary auxtype="Material" auxvalue="OpSurface_EJ200-rough"/>
+            </auxiliary> -->
+
+            <!-- <auxiliary auxtype="Skin" auxvalue="ScintCoating">
+                <auxiliary auxtype="SurfaceName" auxvalue="scint_surf"/>
+                <auxiliary auxtype="LVname" auxvalue="Scintillator"/>
+                <auxiliary auxtype="Material" auxvalue="OpSurface_EJ200-rough"/>
+            </auxiliary> -->
+
+            <!-- <auxiliary auxtype="Skin" auxvalue="DetCoating">
+                <auxiliary auxtype="SurfaceName" auxvalue="scint_surf"/>
+                <auxiliary auxtype="LVname" auxvalue="Detector"/>
+                <auxiliary auxtype="Material" auxvalue="OpSurface_EJ200-rough"/>
+            </auxiliary> -->
+
+
+            <!-- <auxiliary auxtype="Border" auxvalue="Scint-Part">
+                <auxiliary auxtype="SurfaceName" auxvalue="scint-box"/>
+                <auxiliary auxtype="PVname" auxvalue="Scintillator_PV"/>
+                <auxiliary auxtype="PVname" auxvalue="Partition_PV"/>
+                <auxiliary auxtype="Material" auxvalue="OpSurface_EJ200-rough"/>
+            </auxiliary> -->
+
+
+            <auxiliary auxtype="Skin" auxvalue="DetWrapper">
+                <auxiliary auxtype="SurfaceName" auxvalue="reflective" />
+                <auxiliary auxtype="LVname" auxvalue="Detector" />
+                <auxiliary auxtype="Material" auxvalue="OpSurface_Tyvek" />
+            </auxiliary>
+
+            <auxiliary auxtype="Skin" auxvalue="ScintWrapper">
+                <auxiliary auxtype="SurfaceName" auxvalue="reflective" />
+                <auxiliary auxtype="LVname" auxvalue="Scintillator" />
+                <auxiliary auxtype="Material" auxvalue="OpSurface_Tyvek" />
+            </auxiliary>
+
+
+        </auxiliary>
+    </userinfo>
+
+
+    <setup name="Default" version="1.0">
+        <world ref="World"/>
+    </setup>
+
+</gdml>

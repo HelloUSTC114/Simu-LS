@@ -29,7 +29,7 @@ void Argument::Initialize(){
 	char buf[1024];
 	G4String dir = getcwd(buf, 1024);
 	gdmlFileName = dir + "/mac/default.gdml";
-    macroFileName = dir + "/mac/run.mac";
+    macroFileName = dir + "/mac/init.mac";
 	rootFileName = dir + "/CRTest.root";
 	rndFactor = 1;
 #ifdef __unix
