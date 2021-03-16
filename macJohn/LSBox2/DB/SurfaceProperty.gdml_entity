@@ -1,0 +1,65 @@
+<auxiliary auxtype="Property">
+    <!-- Surface property -->
+
+    <!-- <auxiliary auxtype="Skin" auxvalue="PartCoating">
+        <auxiliary auxtype="SurfaceName" auxvalue="scint_surf"/>
+        <auxiliary auxtype="LVname" auxvalue="Partition"/>
+        <auxiliary auxtype="Material" auxvalue="OpSurface_EJ200-rough"/>
+    </auxiliary> -->
+
+    <!-- <auxiliary auxtype="Skin" auxvalue="ScintCoating">
+        <auxiliary auxtype="SurfaceName" auxvalue="scint_surf"/>
+        <auxiliary auxtype="LVname" auxvalue="Scintillator"/>
+        <auxiliary auxtype="Material" auxvalue="OpSurface_EJ200-rough"/>
+    </auxiliary> -->
+
+    <!-- <auxiliary auxtype="Skin" auxvalue="DetCoating">
+        <auxiliary auxtype="SurfaceName" auxvalue="scint_surf"/>
+        <auxiliary auxtype="LVname" auxvalue="Detector"/>
+        <auxiliary auxtype="Material" auxvalue="OpSurface_EJ200-rough"/>
+    </auxiliary> -->
+
+
+    <!-- <auxiliary auxtype="Border" auxvalue="Scint-Part">
+        <auxiliary auxtype="SurfaceName" auxvalue="scint-box"/>
+        <auxiliary auxtype="PVname" auxvalue="Scintillator_PV"/>
+        <auxiliary auxtype="PVname" auxvalue="Partition_PV"/>
+        <auxiliary auxtype="Material" auxvalue="OpSurface_EJ200-rough"/>
+    </auxiliary> -->
+
+
+    <auxiliary auxtype="Skin" auxvalue="DetWrapper">
+        <auxiliary auxtype="SurfaceName" auxvalue="reflective" />
+        <auxiliary auxtype="LVname" auxvalue="Detector" />
+        <auxiliary auxtype="Material" auxvalue="OpSurface_Tyvek" />
+    </auxiliary>
+
+    <auxiliary auxtype="Skin" auxvalue="ScintWrapper">
+        <auxiliary auxtype="SurfaceName" auxvalue="reflective" />
+        <auxiliary auxtype="LVname" auxvalue="Scintillator" />
+        <auxiliary auxtype="Material" auxvalue="OpSurface_Tyvek" />
+    </auxiliary>
+
+    <auxiliary auxtype="Skin" auxvalue="Photocathode">
+        <auxiliary auxtype="SurfaceName" auxvalue="photocath" />
+        <auxiliary auxtype="LVname" auxvalue="PMT" />
+        <auxiliary auxtype="Material" auxvalue="OpSurface_SiPM_S13360_1375" />
+    </auxiliary>
+
+    <auxiliary auxtype="Border" auxvalue="Scint-Fiber">
+        <auxiliary auxtype="SurfaceName" auxvalue="agreflect" />
+        <auxiliary auxtype="PVname" auxvalue="Fiber_PV" />
+        <auxiliary auxtype="PVname" auxvalue="FiberCladding2_PV" />
+        <auxiliary auxtype="Material" auxvalue="Reflection_Ag" />
+    </auxiliary>
+
+    <auxiliary auxtype="Skin" auxvalue="AgBorder">
+        <auxiliary auxtype="SurfaceName" auxvalue="agreflect" />
+        <auxiliary auxtype="LVname" auxvalue="Reflect" />
+        <auxiliary auxtype="Material" auxvalue="Reflection_Ag" />
+    </auxiliary>
+
+
+
+
+</auxiliary>

@@ -17,3 +17,12 @@
 
 # Set default beam generator
 /CRTest/generator/set beam
+/process/optical/scintillation/SetYieldFactor 0.56
+
+#/gun/particle opticalphoton
+#/gun/position 5 0 -3 mm
+#/gun/position 0 0 -3 mm
+#/gun/direction 0 1 0
+#/gun/energy 4.5 V
+#/gun/energy 2.85 eV
+

@@ -19,6 +19,7 @@ enum OpPhotonType{
 	Nothing = 0,
 	Scintillation,
 	Scint2Groove,
+	Scint2Cladding,
 	Groove2Cladding,
 	Cladding2Core,
 	OpWLS,
@@ -49,6 +50,7 @@ public:
     G4int nScintTotal;
     G4int nScint2Groove;
 	G4int nGroove2Cladding;
+	G4int nScint2Cladding;
 	G4int nCladding2Core;
     G4int nWlsEmit;
     G4int nCore2PMT;

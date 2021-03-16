@@ -130,6 +130,18 @@
     <property name="ABSLENGTH" ref="BC408_ABSLENGTH"/>
     <property name="RESOLUTIONSCALE" ref="BC408_RESOLUTIONSCALE"/>
   </material>
+
+  <material formula=" " name="EJ309_LS" >
+    <D value="0.959" />
+    <fraction n="0.094222" ref="Hydrogen" />
+    <fraction n="0.905778" ref="Carbon" />
+    <property name="RINDEX" ref="EJ309_RINDEX"/>
+    <property name="SCINTILLATIONYIELD" ref="EJ309_SCINTILLATIONYIELD"/>
+    <property name="FASTCOMPONENT" ref="EJ309_FASTCOMPONENT"/>
+    <property name="FASTTIMECONSTANT" ref="EJ309_FASTTIMECONSTANT"/>
+    <property name="ABSLENGTH" ref="EJ309_ABSLENGTH"/>
+    <property name="RESOLUTIONSCALE" ref="EJ309_RESOLUTIONSCALE"/>
+  </material>
   
   <!-- Optical Glue -->
   <material formula=" " name="EJ500" >
@@ -310,3 +322,22 @@
     <property name="TRANSMITTANCE" ref="OpSurface_PMT_TRANSMITTANCE" />
   </material>
   
+  <element Z="47" formula="Ag" name="Argentum">
+    <atom value="107.8682" />
+  </element>
+  
+  <material name="Reflection_Ag">
+    <D value="10.49"/>
+    <fraction n="1" ref="Argentum"/>
+    <property name="EFFICIENCY" ref="Ag_EFFICIENCY" />
+    <property name="REFLECTIVITY" ref="Ag_REFLECTIVITY" />
+  </material>
+  
+  <material name="OpSurface_SiPM_S13360_1375">
+    <D value="0.00129" />
+    <fraction n="0.7" ref="Nitrogen" />
+    <fraction n="0.3" ref="Oxygen" />
+    <property name="EFFICIENCY" ref="SiPM_S13360_1375_EFFICIENCY" />
+    <property name="REFLECTIVITY" ref="OpSurface_PMT_REFLECTIVITY" />
+    <property name="TRANSMITTANCE" ref="OpSurface_PMT_TRANSMITTANCE" />
+  </material>

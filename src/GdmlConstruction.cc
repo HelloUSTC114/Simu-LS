@@ -77,7 +77,7 @@ void GdmlConstruction::Init()
 
 	auto detectorVis = new G4VisAttributes(true, G4Color::Blue());
 	auto targetVis = new G4VisAttributes(true, G4Color::Red());
-	auto worldVis = new G4VisAttributes(true, G4Color::White());
+	auto worldVis = new G4VisAttributes(false, G4Color::White());
 
 	auto scinVis = new G4VisAttributes(true, G4Color::Brown());
 

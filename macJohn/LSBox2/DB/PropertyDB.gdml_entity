@@ -88,7 +88,7 @@
 <!-- it is _not_ a standalone GDML file -->
 <!-- This file should be referenced in <define></define>-->
 
-  
+
 <matrix name="AIR_RINDEX" coldim="2" values="2.91*eV 1.00" />
 
 <!-- Scintillator EJ-200 (OLD)-->
@@ -219,6 +219,92 @@
 <matrix name="BC408_SLOWTIMECONSTANT" coldim="1" values="14.2*ns" />
 <matrix name="BC408_RESOLUTIONSCALE" coldim="1" values="1." />
 
+
+<!-- Liquid Scintillator EJ 309 -->
+<matrix name="EJ309_RINDEX" coldim="2" values="2.91*eV 1.57"/>
+<matrix name="EJ309_SCINTILLATIONYIELD" coldim="1" values="12300/MeV" />
+<matrix name="EJ309_FASTCOMPONENT" coldim="2" values="3.28486073481854*eV	0
+3.2614225561898*eV	0.015238095238095
+3.24751951154529*eV	0.038095238095238
+3.23373449770074*eV	0.066666666666667
+3.22233606802961*eV	0.108571428571429
+3.21440486111111*eV	0.148571428571429
+3.20763769298246*eV	0.182857142857143
+3.19865900104968*eV	0.228571428571428
+3.1919578997905*eV	0.276190476190476
+3.18528481707317*eV	0.318095238095238
+3.18085157446068*eV	0.344761904761905
+3.17312302152031*eV	0.39047619047619
+3.16652837720817*eV	0.436190476190476
+3.16214715496368*eV	0.472380952380952
+3.15450911835749*eV	0.514285714285714
+3.14474283625731*eV	0.556190476190476
+3.13718854667124*eV	0.592380952380952
+3.12539057264957*eV	0.622857142857143
+3.11156141082369*eV	0.655238095238095
+3.09680468326558*eV	0.674285714285714
+3.07700014304948*eV	0.687619047619048
+3.05847019906323*eV	0.702857142857143
+3.03814138418079*eV	0.723809523809524
+3.02307123842593*eV	0.76
+3.01310725939354*eV	0.803809523809524
+3.00320874671485*eV	0.838095238095238
+2.99533663990826*eV	0.868571428571428
+2.9855543517309*eV	0.897142857142857
+2.97583575032552*eV	0.929523809523809
+2.96714294871795*eV	0.948571428571428
+2.95467596153846*eV	0.975238095238095
+2.94231330061152*eV	0.994285714285714
+2.93005366185897*eV	0.998095238095238
+2.91882740261814*eV	0.998095238095238
+2.91231838961453*eV	0.980952380952381
+2.90768684001272*eV	0.958095238095238
+2.90306999841219*eV	0.933333333333333
+2.89846779486367*eV	0.908571428571428
+2.89388015986072*eV	0.885714285714286
+2.88839413112164*eV	0.855238095238095
+2.88111170028364*eV	0.826666666666666
+2.87025664835165*eV	0.8
+2.85769535010941*eV	0.784761904761905
+2.84435825295582*eV	0.775238095238095
+2.83114506813255*eV	0.765714285714286
+2.81718564714946*eV	0.756190476190476
+2.80508359159251*eV	0.748571428571428
+2.79393869957213*eV	0.735238095238095
+2.78372942295981*eV	0.714285714285714
+2.77612129517158*eV	0.697142857142857
+2.7702325530303*eV	0.68
+2.76102912262156*eV	0.659047619047619
+2.75105850887752*eV	0.634285714285714
+2.74198183113377*eV	0.605714285714286
+2.73133176725426*eV	0.577142857142857
+2.72076411458333*eV	0.554285714285714
+2.70706764139769*eV	0.529523809523809
+2.6966865560472*eV	0.512380952380952
+2.68401862155021*eV	0.487619047619048
+2.66990871057243*eV	0.464761904761905
+2.65440401422764*eV	0.44
+2.63755551788806*eV	0.415238095238095
+2.61791736111111*eV	0.386666666666666
+2.60152744023904*eV	0.36
+2.58242017655367*eV	0.325714285714286
+2.56359153813797*eV	0.293333333333333
+2.54574420077973*eV	0.264761904761905
+2.52814364629425*eV	0.23047619047619
+2.51147456730769*eV	0.201904761904762
+2.491623718997*eV	0.171428571428571
+2.47275288747633*eV	0.148571428571429
+2.45350709205582*eV	0.127619047619048
+2.43196792364991*eV	0.106666666666667
+2.41207583773087*eV	0.087619047619048
+2.39501373460833*eV	0.074285714285714
+2.38066860026042*eV	0.066666666666667
+2.36772013079513*eV	0.064761904761905
+2.37386845624513*eV	0.064761904761905" />
+<matrix name="EJ309_ABSLENGTH" coldim="2" values="2.91*eV 150*cm" />
+<matrix name="EJ309_FASTTIMECONSTANT" coldim="1" values="3.5*ns" />
+<matrix name="EJ309_RESOLUTIONSCALE" coldim="1" values="1." />
+
 <!--Kuraray Y-11 (OLD) -->
 <matrix name="WLS_RINDEX" coldim="2" values="2.91*eV 1.60" />
 <matrix name="WLS_TAU" coldim="1" values="0.5*ns" />
@@ -244,7 +330,7 @@
                                           2.207*eV	0.09892
                                           2.168*eV	0.04347
                                           2.12*eV		0.0241
-                                          2.034*eV	0.00"/>
+                                          2.034*eV	0.00" />
 <matrix name="WLS_ABSORB" coldim="2" values="3.472*eV	2724.*mm
                                           3.334*eV	1390.*mm
                                           3.236*eV	527.3*mm
@@ -267,14 +353,14 @@
                                           2.628*eV	280.6*mm
                                           2.61*eV	530.1*mm
                                           2.589*eV	2074.*mm
-                                          2.536*eV	8178.*mm"/>
+                                          2.536*eV	8178.*mm" />
 
 <!--WLS Fiber-->
 <variable name="CLADDING1_Density" value="1.19" />
 <matrix name="CLADDING1_RINDEX" coldim="2" values="2.91*eV 1.49" />
 <matrix name="CLADDING2_RINDEX" coldim="2" values="2.91*eV 1.42" />
 
-  <!--Kuraray Y-11 -->
+<!--Kuraray Y-11 -->
 <variable name="Y11_CORE_Density" value="1.05" />
 <variable name="Y11_CLADDING1_Density" value="1.19" />
 <variable name="Y11_CLADDING2_Density" value="1.43" />
@@ -307,7 +393,7 @@
   2.55*eV 50*mm
   2.50*eV 200*mm
   2.45*eV 2000*mm
-  2.40*eV 5000*mm"/>
+  2.40*eV 5000*mm" />
 <matrix name="Y11_WLSCOMPONENT" coldim="2" values="2.875*eV	0.0017
   2.774*eV	0.00482
   2.733*eV	0.05421
@@ -331,7 +417,7 @@
   2.12*eV		0.0241" />
 <matrix name="Y11_WLSTIMECONSTANT" coldim="1" values="0.5*ns" />
 
-  <!-- Saint-Gobain BCF92 -->
+<!-- Saint-Gobain BCF92 -->
 <variable name="BCF92_CORE_Density" value="1.05" />
 <matrix name="BCF92_CORE_RINDEX" coldim="2" values="2.91*eV 1.60" />
 <matrix name="BCF92_CLADDING_RINDEX" coldim="2" values="2.91*eV 1.49" />
@@ -351,7 +437,7 @@
   2.55*eV 50*mm
   2.50*eV 200*mm
   2.45*eV 2000*mm
-  2.40*eV 5000*mm"/>
+  2.40*eV 5000*mm" />
 <matrix name="BCF92_WLSCOMPONENT" coldim="2" values="2.68109*eV	0.00077
   2.66421*eV	0.02556
   2.6469*eV	0.07806
@@ -377,78 +463,78 @@
   2.06754*eV	0.06152" />
 <matrix name="BCF92_WLSTIMECONSTANT" coldim="1" values="0.5*ns" />
 
- <!-- Optical Cement -->
+<!-- Optical Cement -->
 <matrix name="Optical_Cement_RINDEX" coldim="2" values="2.91*eV 1.58" />
 <matrix name="EJ500_RINDEX" coldim="2" values="2.91*eV 1.57" />
 <matrix name="LONG_ABSLENGTH" coldim="2" values="2.91*eV 10.*m" />
 
 <!-- Optical Surface Property -->
 
-  <!-- Scintillator Wrapper -->
-<matrix name="OpSurface_Scint_SPIKE" coldim="1" values="0.7"/>  
-<matrix name="OpSurface_Scint_LOBE" coldim="1" values="0.3"/>
-<matrix name="OpSurface_Scint_REFLECTIVITY" coldim="2" values="2.91*eV 0.9"/>
+<!-- Scintillator Wrapper -->
+<matrix name="OpSurface_Scint_SPIKE" coldim="1" values="0.7" />
+<matrix name="OpSurface_Scint_LOBE" coldim="1" values="0.3" />
+<matrix name="OpSurface_Scint_REFLECTIVITY" coldim="2" values="2.91*eV 0.9" />
 
-  <!-- Groove Finish -->
-<matrix name="OpSurface_Groove_SPIKE" coldim="1" values="0.7"/>
-<matrix name="OpSurface_Groove_LOBE" coldim="1" values="0.3"/>
-<matrix name="OpSurface_Groove_REFLECTIVITY" coldim="2" values="2.91*eV 0.9"/>
+<!-- Groove Finish -->
+<matrix name="OpSurface_Groove_SPIKE" coldim="1" values="0.7" />
+<matrix name="OpSurface_Groove_LOBE" coldim="1" values="0.3" />
+<matrix name="OpSurface_Groove_REFLECTIVITY" coldim="2" values="2.91*eV 0.9" />
 
-  <!--Tyvek-->
-<matrix name="OpSurface_Tyvek_SPIKE" coldim="1" values="0."/>
-<matrix name="OpSurface_Tyvek_LOBE" coldim="1" values="0.2"/>
-<matrix name="OpSurface_Tyvek_BACK" coldim="1" values="0."/>
-<matrix name="OpSurface_Tyvek_REFLECTIVITY" coldim="2" values="2.91*eV 0.95"/>
-<matrix name="OpSurface_Tyvek_EFFICIENCY" coldim="2" values="2.91*eV 0."/>
+<!--Tyvek-->
+<matrix name="OpSurface_Tyvek_SPIKE" coldim="1" values="0." />
+<matrix name="OpSurface_Tyvek_LOBE" coldim="1" values="0.2" />
+<matrix name="OpSurface_Tyvek_BACK" coldim="1" values="0." />
+<matrix name="OpSurface_Tyvek_REFLECTIVITY" coldim="2" values="2.91*eV 0.95" />
+<matrix name="OpSurface_Tyvek_EFFICIENCY" coldim="2" values="2.91*eV 0." />
 
-  <!-- Aluminum Foil -->
-<matrix name="OpSurface_Al-foil_SPIKE" coldim="1" values="0."/>
-<matrix name="OpSurface_Al-foil_LOBE" coldim="1" values="1.0"/>
-<matrix name="OpSurface_Al-foil_BACK" coldim="1" values="0."/>
-<matrix name="OpSurface_Al-foil_REFLECTIVITY" coldim="2" values="2.91*eV 0.97"/>
-<matrix name="OpSurface_Al-foil_EFFICIENCY" coldim="2" values="2.91*eV 0."/>
+<!-- Aluminum Foil -->
+<matrix name="OpSurface_Al-foil_SPIKE" coldim="1" values="0." />
+<matrix name="OpSurface_Al-foil_LOBE" coldim="1" values="1.0" />
+<matrix name="OpSurface_Al-foil_BACK" coldim="1" values="0." />
+<matrix name="OpSurface_Al-foil_REFLECTIVITY" coldim="2" values="2.91*eV 0.97" />
+<matrix name="OpSurface_Al-foil_EFFICIENCY" coldim="2" values="2.91*eV 0." />
 
-  <!-- EJ200 (polished)-->
-<matrix name="OpSurface_EJ200-polished_SPIKE" coldim="1" values="0."/>
-<matrix name="OpSurface_EJ200-polished_LOBE" coldim="1" values="0.989"/>
-<matrix name="OpSurface_EJ200-polished_BACK" coldim="1" values="0."/>
-<matrix name="OpSurface_EJ200-polished_REFLECTIVITY" coldim="2" values="2.91*eV 0.95"/>
-<matrix name="OpSurface_EJ200-polished_EFFICIENCY" coldim="2" values="2.91*eV 0."/>
+<!-- EJ200 (polished)-->
+<matrix name="OpSurface_EJ200-polished_SPIKE" coldim="1" values="0." />
+<matrix name="OpSurface_EJ200-polished_LOBE" coldim="1" values="0.989" />
+<matrix name="OpSurface_EJ200-polished_BACK" coldim="1" values="0." />
+<matrix name="OpSurface_EJ200-polished_REFLECTIVITY" coldim="2" values="2.91*eV 0.95" />
+<matrix name="OpSurface_EJ200-polished_EFFICIENCY" coldim="2" values="2.91*eV 0." />
 
-  <!-- EJ200 (rough)-->
-<matrix name="OpSurface_EJ200-rough_SPIKE" coldim="1" values="0."/>
-<matrix name="OpSurface_EJ200-rough_LOBE" coldim="1" values="0.89"/>
-<matrix name="OpSurface_EJ200-rough_BACK" coldim="1" values="0."/>
-<matrix name="OpSurface_EJ200-rough_REFLECTIVITY" coldim="2" values="2.91*eV 0.95"/>
-<matrix name="OpSurface_EJ200-rough_EFFICIENCY" coldim="2" values="2.91*eV 0."/>
+<!-- EJ200 (rough)-->
+<matrix name="OpSurface_EJ200-rough_SPIKE" coldim="1" values="0." />
+<matrix name="OpSurface_EJ200-rough_LOBE" coldim="1" values="0.89" />
+<matrix name="OpSurface_EJ200-rough_BACK" coldim="1" values="0." />
+<matrix name="OpSurface_EJ200-rough_REFLECTIVITY" coldim="2" values="2.91*eV 0.95" />
+<matrix name="OpSurface_EJ200-rough_EFFICIENCY" coldim="2" values="2.91*eV 0." />
 
-  <!-- Black-->
-<matrix name="OpSurface_Black_SPIKE" coldim="1" values="1."/>
-<matrix name="OpSurface_Black_LOBE" coldim="1" values="0."/>
-<matrix name="OpSurface_Black_BACK" coldim="1" values="0."/>
-<matrix name="OpSurface_Black_REFLECTIVITY" coldim="2" values="2.91*eV 0."/>
-<matrix name="OpSurface_Black_EFFICIENCY" coldim="2" values="2.91*eV 0."/>
+<!-- Black-->
+<matrix name="OpSurface_Black_SPIKE" coldim="1" values="1." />
+<matrix name="OpSurface_Black_LOBE" coldim="1" values="0." />
+<matrix name="OpSurface_Black_BACK" coldim="1" values="0." />
+<matrix name="OpSurface_Black_REFLECTIVITY" coldim="2" values="2.91*eV 0." />
+<matrix name="OpSurface_Black_EFFICIENCY" coldim="2" values="2.91*eV 0." />
 
-  <!-- Teflon (polished)-->
-<matrix name="OpSurface_Teflon-polished_RINDEX" coldim="2" values="2.91*eV 1."/>
-<matrix name="OpSurface_Teflon-polished_SPIKE" coldim="1" values="0."/>
-<matrix name="OpSurface_Teflon-polished_LOBE" coldim="1" values="0."/>
-<matrix name="OpSurface_Teflon-polished_BACK" coldim="1" values="0."/>
-<matrix name="OpSurface_Teflon-polished_REFLECTIVITY" coldim="2" values="2.91*eV 0."/>
-<matrix name="OpSurface_Teflon-polished_EFFICIENCY" coldim="2" values="2.91*eV 0."/>
+<!-- Teflon (polished)-->
+<matrix name="OpSurface_Teflon-polished_RINDEX" coldim="2" values="2.91*eV 1." />
+<matrix name="OpSurface_Teflon-polished_SPIKE" coldim="1" values="0." />
+<matrix name="OpSurface_Teflon-polished_LOBE" coldim="1" values="0." />
+<matrix name="OpSurface_Teflon-polished_BACK" coldim="1" values="0." />
+<matrix name="OpSurface_Teflon-polished_REFLECTIVITY" coldim="2" values="2.91*eV 0." />
+<matrix name="OpSurface_Teflon-polished_EFFICIENCY" coldim="2" values="2.91*eV 0." />
 
-  <!-- Teflon (rough)-->
-<matrix name="OpSurface_Teflon-rough_RINDEX" coldim="2" values="2.91*eV 1."/>
-<matrix name="OpSurface_Teflon-rough_SPIKE" coldim="1" values="1."/>
-<matrix name="OpSurface_Teflon-rough_LOBE" coldim="1" values="0."/>
-<matrix name="OpSurface_Teflon-rough_BACK" coldim="1" values="0."/>
-<matrix name="OpSurface_Teflon-rough_REFLECTIVITY" coldim="2" values="2.91*eV 0.95"/>
-<matrix name="OpSurface_Teflon-rough_EFFICIENCY" coldim="2" values="2.91*eV 0."/>
+<!-- Teflon (rough)-->
+<matrix name="OpSurface_Teflon-rough_RINDEX" coldim="2" values="2.91*eV 1." />
+<matrix name="OpSurface_Teflon-rough_SPIKE" coldim="1" values="1." />
+<matrix name="OpSurface_Teflon-rough_LOBE" coldim="1" values="0." />
+<matrix name="OpSurface_Teflon-rough_BACK" coldim="1" values="0." />
+<matrix name="OpSurface_Teflon-rough_REFLECTIVITY" coldim="2" values="2.91*eV 0.95" />
+<matrix name="OpSurface_Teflon-rough_EFFICIENCY" coldim="2" values="2.91*eV 0." />
 
-  <!-- PMT Photocathode -->
-<matrix name="OpSurface_PMT_REFLECTIVITY" coldim="2" values="2.6*eV 0."/>
-<matrix name="OpSurface_PMT_TRANSMITTANCE" coldim="2" values="2.6*eV 0."/>
-<matrix name="OpSurface_PMT_EFFICIENCY" coldim="2" values="2.6*eV 0.15"/>
+<!-- PMT Photocathode -->
+<matrix name="OpSurface_PMT_REFLECTIVITY" coldim="2" values="2.6*eV 0." />
+<matrix name="OpSurface_PMT_TRANSMITTANCE" coldim="2" values="2.6*eV 0." />
+<matrix name="OpSurface_PMT_EFFICIENCY" coldim="2" values="2.6*eV 0.15" />
 
 <matrix name="PMT_R7546_EFFICIENCY" coldim="2" values="4.41753*eV	0.103856
   4.29422*eV	0.128665
@@ -473,7 +559,7 @@
   1.96227*eV	0.0122321
   1.94516*eV	0.00959865
   1.93514*eV	0.00773268
-  1.91852*eV	0.00591303"/>
+  1.91852*eV	0.00591303" />
 
 <matrix name="PMT_R5610A_EFFICIENCY" coldim="2" values="4.61292*eV	0.0958275
   4.53266*eV	0.109016
@@ -494,4 +580,37 @@
   2.02103*eV	0.0114993
   1.95402*eV	0.00571281
   1.87936*eV	0.00178439
-  1.79663*eV	0.000188044"/>
+  1.79663*eV	0.000188044" />
+
+
+<!--Ag-Reflect-->
+<matrix name="Ag_REFLECTIVITY" coldim="2" values="2.91*eV 0.98" />
+<matrix name="Ag_EFFICIENCY" coldim="2" values="2.91*eV 0." />
+
+
+<matrix name="SiPM_S13360_1375_EFFICIENCY" coldim="2" values="4.515*eV	0.03125
+  4.465*eV	0.0605469
+  4.367*eV	0.100586
+  4.249*eV	0.201172
+  4.137*eV	0.253906
+  3.970*eV	0.299805
+  3.605*eV	0.353516
+  3.462*eV	0.355469
+  3.316*eV	0.37793
+  3.221*eV	0.399414
+  3.143*eV	0.43457
+  3.057*eV	0.454102
+  2.943*eV	0.475586
+  2.719*eV	0.498047
+  2.584*eV	0.49707
+  2.425*eV	0.475586
+  2.324*eV	0.44043
+  2.207*eV	0.393555
+  2.100*eV	0.349609
+  1.994*eV	0.303711
+  1.960*eV	0.277344
+  1.827*eV	0.219727
+  1.693*eV	0.160156
+  1.558*eV	0.108398
+  1.452*eV  0.0644531
+  1.375*eV  0.0410156"/>

@@ -126,25 +126,31 @@ void StepAction::UserSteppingAction(const G4Step *aStep)
 				Recorder->nScint2Groove ++;
 
 			}
-			else if ((thePrePV->GetName().find("Groove")!=G4String::npos) && (thePostPV->GetName() == "Fiber_PV" || thePostPV->GetName() == "Cladding2_PV"))
+			else if ((thePrePV->GetName().find("Groove")!=G4String::npos) && (thePostPV->GetName() .find( "Fiber")!=G4String::npos || thePostPV->GetName() .find( "Cladding2")!=G4String::npos))
 			{
 				type = Groove2Cladding;
 				Recorder->nGroove2Cladding += 1;
 			}
-			else if (thePrePV->GetName() == "Cladding1_PV" && thePostPV->GetName() == "Core_PV")
+			else if ((thePrePV->GetName().find("Scin")!=G4String::npos) && (thePostPV->GetName() .find( "Fiber")!=G4String::npos || thePostPV->GetName() .find( "Cladding2")!=G4String::npos))
+			{
+				type = Scint2Cladding;
+				Recorder->nScint2Cladding += 1;
+
+			}
+			else if (thePrePV->GetName() .find( "Cladding1")!=G4String::npos && thePostPV->GetName() .find( "Core")!=G4String::npos)
 			{
 				type = Cladding2Core;
 				Recorder->nCladding2Core += 1;
 			}
 			// For Debug boundary details
-			else if ((thePrePV->GetName() == "Cladding1_PV" ||  thePrePV->GetName() == "Cladding2_PV" ) && thePostPV->GetName() == "Groove_PV")
+			else if ((thePrePV->GetName() .find( "Cladding1")!=G4String::npos ||  thePrePV->GetName() .find( "Cladding2")!=G4String::npos ) && thePostPV->GetName() .find( "Groove")!=G4String::npos)
 			{
 				Recorder->SetBoundaryName("Fiber2Groove");
 				BoundaryStats(boundary);
 				return;
 			}
 		}
-        else if (thePrePV->GetName() == "Fiber_PV" && thePostPV->GetName() == "PMT_PV")
+        else if (thePrePV->GetName() .find( "Fiber")!=G4String::npos && thePostPV->GetName() .find( "PMT")!=G4String::npos)
         {
 			// OpPhoton hit PMT photocathode
             type = Fiber2Pmt;
