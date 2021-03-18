@@ -1,0 +1,16 @@
+<!-- Surface definition -->
+<opticalsurface name="scint_surf" model="unified" finish="ground" type="dielectric_dielectric" value="0.12" />
+
+<opticalsurface name="reflective" model="unified" finish="ground" type="dielectric_metal" value="0.2" />
+
+<opticalsurface name="part_surf" model="unified" finish="ground" type="dielectric_metal" value="0.2" />
+
+<opticalsurface name="fiber_surf" model="unified" finish="ground" type="dielectric_dielectric" value="0.01" />
+<opticalsurface name="default" model="unified" finish="polished" type="dielectric_dielectric" value="0." />
+<opticalsurface name="photocath" model="unified" finish="ground" type="dielectric_metal" value="0.0"/>
+
+<!-- <opticalsurface name="agreflect" model="unified" finish="groundbackpainted" type="dielectric_metal" value="0.01" /> -->
+<opticalsurface name="agreflect" model="unified" finish="ground" type="dielectric_metal" value="0.05" />
+
+<opticalsurface name="Black" model="unified" finish="ground" type="dielectric_metal" value="0." />
+

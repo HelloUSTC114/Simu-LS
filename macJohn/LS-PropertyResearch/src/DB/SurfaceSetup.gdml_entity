@@ -1,0 +1,66 @@
+<!-- Surface setup -->
+<!-- <skinsurface name="scint_coat" surfaceproperty="reflective">
+    <volumeref ref="Scintillator" />
+</skinsurface> -->
+<skinsurface name="scint_coat" surfaceproperty="reflective">
+    <volumeref ref="Detector" />
+</skinsurface>
+
+<skinsurface name="scint_coat" surfaceproperty="reflective">
+    <volumeref ref="Partition" />
+</skinsurface>
+
+<!-- Fiber Surface -->
+<skinsurface name="fiber_skin" surfaceproperty="fiber_surf">
+    <volumeref ref="Fiber" />
+</skinsurface>
+<skinsurface name="fiber_skin" surfaceproperty="fiber_surf">
+    <volumeref ref="FiberCladding2" />
+</skinsurface>
+<skinsurface name="fiber_inner" surfaceproperty="default">
+    <volumeref ref="FiberCladding1" />
+</skinsurface>
+<skinsurface name="fiber_skin" surfaceproperty="default">
+    <volumeref ref="FiberCore" />
+</skinsurface>
+
+<skinsurface name="pmt_skin" surfaceproperty="photocath">
+    <volumeref ref="PMT" />
+</skinsurface>
+
+<skinsurface name="reflect_skin" surfaceproperty="agreflect">
+    <volumeref ref="Reflect" />
+</skinsurface>
+
+
+
+
+<!-- FiberTest -->
+
+
+<skinsurface name="fiber_skin" surfaceproperty="fiber_surf">
+    <volumeref ref="Cladding2" />
+</skinsurface>
+
+<skinsurface name="fiber_inner" surfaceproperty="default">
+    <volumeref ref="Cladding1" />
+</skinsurface>
+
+<skinsurface name="fiber_skin" surfaceproperty="default">
+    <volumeref ref="Core" />
+</skinsurface>
+<skinsurface name="fiber_skin" surfaceproperty="fiber_surf">
+    <volumeref ref="Fiber" />
+</skinsurface>
+
+
+
+
+<!-- Here cancled definition of partition surface, use scintillator surface instead, so as to induce calculation time with the same simulation condition -->
+
+<!-- <skinsurface name="part_wrap" surfaceproperty="part_surf">
+            <volumeref ref="Partition"/>
+        </skinsurface>
+        <skinsurface name="part_wrap" surfaceproperty="part_surf">
+            <volumeref ref="PartitionIn"/>
+        </skinsurface> -->

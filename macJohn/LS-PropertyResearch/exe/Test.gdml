@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE gdml [
-<!ENTITY Property SYSTEM "DB/PropertyDB.gdml_entity">
-<!ENTITY Material SYSTEM "DB/MaterialDB.gdml_entity">
-<!ENTITY Solid SYSTEM "DB/SolidDB.gdml_entity">
-<!ENTITY Surface SYSTEM "DB/SurfaceDB.gdml_entity">
-<!ENTITY Volume SYSTEM "DB/Volume.gdml_entity">
-<!ENTITY SurfaceSetup SYSTEM "DB/SurfaceSetup.gdml_entity">
-<!ENTITY SurfaceProperty SYSTEM "DB/SurfaceProperty.gdml_entity">
-<!ENTITY SurfaceProperty SYSTEM "DB/SurfaceProperty.gdml_entity">
-<!ENTITY Config SYSTEM "DB/Config.gdml_entity">
+<!ENTITY Property SYSTEM "../src/DB/PropertyDB.gdml_entity">
+<!ENTITY Material SYSTEM "../src/DB/MaterialDB.gdml_entity">
+<!ENTITY Solid SYSTEM "../src/DB/SolidDB.gdml_entity">
+<!ENTITY Surface SYSTEM "../src/DB/SurfaceDB.gdml_entity">
+<!ENTITY Volume SYSTEM "../src/DB/Volume.gdml_entity">
+<!ENTITY SurfaceSetup SYSTEM "../src/DB/SurfaceSetup.gdml_entity">
+<!ENTITY SurfaceProperty SYSTEM "../src/DB/SurfaceProperty.gdml_entity">
+<!ENTITY SurfaceProperty SYSTEM "../src/DB/SurfaceProperty.gdml_entity">
+<!ENTITY Config SYSTEM "../src/DB/Config.gdml_entity">
 ]>
 
 <gdml xmlns:gdml="http://gdml.web.cern.ch/GDML/"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///schema/gdml.xsd">
 
     <define>
+
+
+
         <!-- Height of the box -->
         <variable name="BoxHeight" value="10"/>
 
@@ -51,13 +54,13 @@
         <variable name="fiberL" value="BoxLength*1.2"/>
         <variable name="fiberOffset" value="3.0"/>
         <variable name="fiberDepth" value="3.0"/>
-        <!-- <variable name="fiberL" value="2"/> -->
-        <variable name="pmtZ" value="0.1"/>
 
         <!-- LS Property -->
-        <!-- <matrix name="DayaBay_SCINTILLATIONYIELD" coldim="1" values="15375*0.45/MeV" /> -->
-        <matrix name="Manual_LSSCINTILLATIONYIELD" coldim="1" values="15375*0.45/MeV"/>
+        <matrix name="Manual_LSSCINTILLATIONYIELD" coldim="1" values="15375*0.60/MeV"/>
         <matrix name="Manual_LSABSLENGTH" coldim="2" values="2.91*eV 1500*cm" />
+
+        <!-- <variable name="fiberL" value="2"/> -->
+        <variable name="pmtZ" value="0.1"/>
 
         &Property;
         &Config;
