@@ -50,7 +50,7 @@ private:
 
     G4UIcmdWithAString* fGeneratorType;
     G4UIcmdWithABool* fTriggerCmd;
-    G4UIcmdWithAString* fTiggerRange;
+    G4UIcmdWithAString* fTriggerRange;
 
 	G4UIcmdWithAString* fGdmlFile;
 	G4UIcmdWithAString* fMaterialCmd;

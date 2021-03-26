@@ -71,11 +71,11 @@ SysMessenger::SysMessenger(G4RunManager* runManager)
   fTriggerCmd->SetDefaultValue(false);
   fTriggerCmd->AvailableForStates(G4State_Idle);
 
-  fTiggerRange = new G4UIcmdWithAString("/CRTest/generator/range", this);
-  fTiggerRange->SetGuidance("Tigger Range : x_min x_max y_min y_max unit)");
-  fTiggerRange->SetParameterName("range",true);
-  fTiggerRange->SetDefaultValue("0 0 0 0 mm");
-  fTiggerRange->AvailableForStates(G4State_Idle);
+  fTriggerRange = new G4UIcmdWithAString("/CRTest/generator/range", this);
+  fTriggerRange->SetGuidance("Tigger Range : x_min x_max y_min y_max unit)");
+  fTriggerRange->SetParameterName("range",true);
+  fTriggerRange->SetDefaultValue("0 0 0 0 mm");
+  fTriggerRange->AvailableForStates(G4State_Idle);
 }
 
 SysMessenger::~SysMessenger()
@@ -113,7 +113,7 @@ void SysMessenger::SetNewValue(G4UIcommand* cmd, G4String val)
     }else if(cmd == fTriggerCmd)
     {
       gun->SetTriggerMode(fTriggerCmd->GetNewBoolValue(val));
-    }else if(cmd == fTiggerRange){
+    }else if(cmd == fTriggerRange){
       G4String xmin, xmax, ymin, ymax, unit;
       std::stringstream ss;
       ss << val;
