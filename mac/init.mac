@@ -16,7 +16,11 @@
 /control/execute ./mac/vis.mac
 
 # Set default beam generator
-/CRTest/generator/set beam
+/CRTest/generator/set Pdu
+#/CRTest/generator/trigger 1
+#/CRTest/generator/range -5 5 -25 25 cm
+#/CRTest/generator/range -3 3 -25 25 cm
+
 #/process/optical/scintillation/SetYieldFactor 0.56
 
 #/gun/particle opticalphoton

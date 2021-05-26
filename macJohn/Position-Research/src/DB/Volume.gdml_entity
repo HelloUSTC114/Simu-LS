@@ -1,0 +1,160 @@
+<!-- Fiber Test -->
+<volume name="Core">
+    <materialref ref="Y11_CORE_PS" />
+    <solidref ref="coreS" />
+</volume>
+
+<volume name="Cladding1">
+    <materialref ref="Fiber_CLADDING1_PMMA" />
+    <solidref ref="cladding1S" />
+    <physvol>
+        <volumeref ref="Core" />
+    </physvol>
+</volume>
+
+<volume name="Cladding2">
+    <materialref ref="Fiber_CLADDING2_FluorPMMA" />
+    <solidref ref="cladding2S" />
+    <physvol>
+        <volumeref ref="Cladding1" />
+    </physvol>
+</volume>
+
+<!-- <volume name="Fiber">
+    <materialref ref="EJ500" />
+    <solidref ref="fiberS2" />
+    <physvol>
+        <volumeref ref="Cladding2" />
+    </physvol>
+</volume>
+ -->
+
+
+
+
+
+<volume name="Reflect">
+    <materialref ref="G4_Ag" />
+    <solidref ref="pmtS" />
+</volume>
+
+<volume name="PMT">
+    <materialref ref="G4_Al" />
+    <solidref ref="pmtS" />
+</volume>
+
+<volume name="PMT">
+    <materialref ref="G4_Al" />
+    <solidref ref="pmtS" />
+</volume>
+
+<volume name="FiberCore">
+    <!-- <materialref ref="BCF92_CORE_PS"/> -->
+    <materialref ref="Y11_CORE_PS" />
+    <solidref ref="fiberCoreS" />
+</volume>
+
+<volume name="FiberCladding1">
+    <materialref ref="Fiber_CLADDING1_PMMA" />
+    <solidref ref="fiberClad1S" />
+    <physvol>
+        <volumeref ref="FiberCore" />
+    </physvol>
+</volume>
+
+<volume name="FiberCladding2">
+    <materialref ref="Fiber_CLADDING2_FluorPMMA" />
+    <solidref ref="fiberClad2S" />
+    <physvol>
+        <volumeref ref="FiberCladding1" />
+    </physvol>
+</volume>
+
+<volume name="Fiber">
+    <materialref ref="AIR" />
+    <solidref ref="fiberS" />
+    <physvol>
+        <volumeref ref="FiberCladding2" />
+    </physvol>
+
+    <physvol copynumber="0">
+        <volumeref ref="PMT" />
+        <position unit="mm" y="-fiberL/2.+pmtZ/2." />
+    </physvol>
+
+    <physvol>
+        <volumeref ref="Reflect" />
+        <position unit="mm" y="fiberL/2.-pmtZ/2.-0.0999" />
+    </physvol>
+</volume>
+
+
+
+<volume name="Partition">
+    <materialref ref="PMMA" />
+    <solidref ref="partSS" />
+</volume>
+
+
+<volume name="Scintillator">
+    <!-- <materialref ref="G4_AIR"/> -->
+    <!-- <materialref ref="EJ200_PVT" /> -->
+    <materialref ref="DayaBay_LS" />
+    <solidref ref="boxinS" />
+
+    <!-- <physvol>
+        <volumeref ref="Fiber" />
+        <rotation x="90" unit="degree" />
+        <position x="0" y="-ConnectLength/2" z="0" />
+    </physvol> -->
+
+    <loop for="Loop1" to="BoxWidth/BoxHeight/2-3" step="1">
+        <physvol copynumber="Loop1*2">
+            <volumeref ref="Partition" />
+            <position x="-BoxWidth/2+2*BoxHeight+BoxHeight*Loop1*2" y="-ConnectLength/2" z="0" />
+            <rotation y="45" unit="degree" />
+
+        </physvol>
+
+        <physvol copynumber="Loop1*2*2">
+            <volumeref ref="Fiber" />
+            <position x="-BoxWidth/2+2*BoxHeight+BoxHeight*Loop1*2 + BoxHeight/2 - fiberOffset" y="-ConnectLength/2" z="(BoxHeight/2-fiberDepth)" />
+        </physvol>
+
+        <physvol copynumber="Loop1*2*2+1">
+            <volumeref ref="Fiber" />
+            <position x="-BoxWidth/2+2*BoxHeight+BoxHeight*Loop1*2 + BoxHeight/2 + fiberOffset" y="-ConnectLength/2" z="(BoxHeight/2-fiberDepth)" />
+        </physvol>
+
+    </loop>
+
+
+    <loop for="Loop2" to="BoxWidth/BoxHeight/2-3" step="1">
+        <physvol copynumber="Loop2*2+1">
+            <volumeref ref="Partition" />
+            <position x="-BoxWidth/2+2*BoxHeight+BoxHeight*(Loop2*2+1)" y="-ConnectLength/2" z="0" />
+            <rotation y="-45" unit="degree" />
+        </physvol>
+
+        <physvol copynumber="(Loop2*2+1)*2">
+            <volumeref ref="Fiber" />
+            <position x="-BoxWidth/2+2*BoxHeight+BoxHeight*(Loop2*2+1)+ BoxHeight/2 - fiberOffset" y="-ConnectLength/2" z="-(BoxHeight/2-fiberDepth)" />
+        </physvol>
+
+        <physvol copynumber="(Loop2*2+1)*2+1">
+            <volumeref ref="Fiber" />
+            <position x="-BoxWidth/2+2*BoxHeight+BoxHeight*(Loop2*2+1)+ BoxHeight/2 + fiberOffset" y="-ConnectLength/2" z="-(BoxHeight/2-fiberDepth)" />
+        </physvol>
+
+
+    </loop>
+
+        <physvol copynumber="Loop1*2+2">
+            <volumeref ref="Partition" />
+            <position x="-BoxWidth/2+2*BoxHeight+BoxHeight*(Loop1*2+2)" y="-ConnectLength/2" z="0" />
+            <rotation y="45" unit="degree" />
+
+        </physvol>
+
+
+</volume>

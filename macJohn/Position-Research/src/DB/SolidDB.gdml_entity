@@ -1,0 +1,87 @@
+<box aunit="radian" lunit="mm" name="worldS" x="BoxWidth*1.1" y="BoxLength*1.1" z="BoxHeight*2" />
+
+<!-- <para aunit="degree" lunit="mm" name="partS1" x="1.4142136*PartThick" y="BoxLength-ConnectLength" z="BoxHeight" alpha="0" theta="45" phi="0"/> -->
+
+<!-- Partition Solid -->
+<box name="partS1" x="PartThick" y="BoxLength-ConnectLength" z="1.4142136*BoxHeight-PartThick" />
+<trd name="partS2" x1="0" y1="BoxLength-ConnectLength" x2="PartThick" y2="BoxLength-ConnectLength" z="1/2*PartThick" />
+
+<union name="partSS1">
+    <first ref="partS1" />
+    <rotationref ref="partR1" />
+    <positionref ref="partP1" />
+    <second ref="partS2" />
+</union>
+
+<union name="partSS">
+    <first ref="partSS1" />
+    <rotationref ref="partR2" />
+    <positionref ref="partP2" />
+    <second ref="partS2" />
+</union>
+
+
+<!-- Box Solid -->
+<box aunit="radian" lunit="mm" name="boxinS" x="BoxWidth" y="BoxLength" z="BoxHeight+0.0001*Thickness" />
+<box aunit="radian" lunit="mm" name="boxoutS" x="BoxWidth+Thickness*2" y="BoxLength+Thickness*2"
+    z="BoxHeight+Thickness*2" />
+<subtraction name="boxS">
+    <first ref="boxoutS" />
+    <second ref="boxinS" />
+</subtraction>
+
+<!-- Fiber Solid -->
+<box name="fiberCore" x="0.94*fiberR" y="(fiberL-2*pmtZ-2*0.1)" z="0.94*fiberR" />
+<eltube name="fiberCoreCut" dx="1.414*0.94*fiberR*roundCornerCore/2" dy="1.414*0.94*fiberR*roundCornerCore/2"
+    dz="(fiberL-2*pmtZ-2*0.1)/2" />
+<intersection name="fiberCoreS">
+    <first ref="fiberCore" />
+    <second ref="fiberCoreCut" />
+    <rotation x="90" unit="degree" />
+</intersection>
+
+<box name="fiberClad1" x="0.97*fiberR" y="(fiberL-2*pmtZ-2*0.1)" z="0.97*fiberR" />
+<eltube name="fiberClad1Cut" dx="1.414*0.97*fiberR*roundCornerClad1/2" dy="1.414*0.97*fiberR*roundCornerClad1/2"
+    dz="(fiberL-2*pmtZ-2*0.1)/2" />
+<intersection name="fiberClad1S">
+    <first ref="fiberClad1" />
+    <second ref="fiberClad1Cut" />
+    <rotation x="90" unit="degree" />
+</intersection>
+
+<box name="fiberClad2" x="1*fiberR" y="(fiberL-2*pmtZ-2*0.1)" z="1*fiberR" />
+<eltube name="fiberClad2Cut" dx="1.414*1*fiberR*roundCornerClad2/2" dy="1.414*1*fiberR*roundCornerClad2/2"
+    dz="(fiberL-2*pmtZ-2*0.1)/2" />
+<intersection name="fiberClad2S">
+    <first ref="fiberClad2" />
+    <second ref="fiberClad2Cut" />
+    <rotation x="90" unit="degree" />
+</intersection>
+
+<box name="pmt" x="1*fiberR" y="pmtZ" z="1*fiberR" />
+<eltube name="pmtCut" dx="1.414*1*fiberR*roundCornerClad2/2" dy="1.414*1*fiberR*roundCornerClad2/2" dz="pmtZ/2" />
+<intersection name="pmtS">
+    <first ref="pmt" />
+    <second ref="pmtCut" />
+    <rotation x="90" unit="degree" />
+</intersection>
+
+<box name="fiber" x="1*fiberR" y="(fiberL)" z="1*fiberR" />
+<eltube name="fiberCut" dx="1.414*1*fiberR*roundCornerClad2/2" dy="1.414*1*fiberR*roundCornerClad2/2"
+    dz="(fiberL)/2" />
+<intersection name="fiberS">
+    <first ref="fiber" />
+    <second ref="fiberCut" />
+    <rotation x="90" unit="degree" />
+</intersection>
+
+
+
+
+<!-- Fiber test -->
+<eltube lunit="mm" name="coreS" dx="0.94*fiberR" dy="0.94*fiberR" dz="fiberL/2-pmtZ-0.1" />
+<eltube lunit="mm" name="cladding1S" dx="0.97*fiberR" dy="0.97*fiberR" dz="fiberL/2-pmtZ-0.1" />
+<eltube lunit="mm" name="cladding2S" dx="1*fiberR" dy="1*fiberR" dz="fiberL/2-pmtZ-0.1" />
+<eltube lunit="mm" name="fiberS2" dx="fiberR" dy="fiberR" dz="fiberL/2" />
+
+<eltube lunit="mm" name="pmtS" dx="fiberR" dy="fiberR" dz="pmtZ/2." />

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE gdml [
+<!ENTITY Property SYSTEM "../src/DB/PropertyDB.gdml_entity">
+<!ENTITY Material SYSTEM "../src/DB/MaterialDB.gdml_entity">
+<!ENTITY Solid SYSTEM "../src/DB/SolidDB.gdml_entity">
+<!ENTITY Surface SYSTEM "../src/DB/SurfaceDB.gdml_entity">
+<!ENTITY Volume SYSTEM "../src/DB/Volume.gdml_entity">
+<!ENTITY SurfaceSetup SYSTEM "../src/DB/SurfaceSetup.gdml_entity">
+<!ENTITY SurfaceProperty SYSTEM "../src/DB/SurfaceProperty.gdml_entity">
+<!ENTITY SurfaceProperty SYSTEM "../src/DB/SurfaceProperty.gdml_entity">
+<!ENTITY Config SYSTEM "../src/DB/Config.gdml_entity">
+]>
+
+<gdml xmlns:gdml="http://gdml.web.cern.ch/GDML/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///schema/gdml.xsd">
+
+    <define>
+
+
+
+        <!-- Height of the box -->
+        <variable name="BoxHeight" value="10"/>
+
+        <!-- Thickness of box -->
+        <variable name="Thickness" value="5"/>
+        <!-- Length of the inner box  -->
+        <variable name="BoxLength" value = "500"/>
+        <variable name="BoxWidth" value="100"/>
+
+        <!-- Width for connecting -->
+        <variable name="ConnectLength" value="0"/>
+
+        <!-- Thickness of part -->
+        <variable name="PartThick" value = "1"/>
+
+        <!-- Loop -->
+        <variable name="Loop1" value = "0"/>
+        <variable name="Loop2" value = "0"/>
+
+
+        <!-- Partition rotation -->
+        <rotation name="partR1" y="180" unit="degree"/>
+        <position name="partP1" x="0" y="0" z="1.4142136/2*BoxHeight-0.25*PartThick" unit="mm"/>
+
+        <rotation name="partR2" y="0" unit="degree"/>
+        <position name="partP2" x="0" y="0" z="-1.4142136/2*BoxHeight+0.25*PartThick" unit="mm"/>
+
+        <!-- Fiber Setting -->
+        <variable name="fiberR" value="1.5"/>
+        <variable name="roundCornerCore" value="0.9"/>
+        <variable name="roundCornerClad1" value="0.9"/>
+        <variable name="roundCornerClad2" value="0.9"/>
+
+        <variable name="fiberL" value="BoxLength*1.2"/>
+        <variable name="fiberOffset" value="3.0"/>
+        <variable name="fiberDepth" value="3.0"/>
+
+        <!-- LS Property -->
+        <matrix name="Manual_LSSCINTILLATIONYIELD" coldim="1" values="15375*0.80/MeV"/>
+        <matrix name="Manual_LSABSLENGTH" coldim="2" values="2.91*eV 1500*cm" />
+
+        <!-- <variable name="fiberL" value="2"/> -->
+        <variable name="pmtZ" value="0.1"/>
+
+        &Property;
+        &Config;
+
+    </define>
+
+    <materials>
+        &Material;
+    </materials>
+
+    <solids>
+        &Solid;
+        &Surface;
+    </solids>
+
+    <structure>
+        &Volume;
+
+        <volume name="Detector">
+            <materialref ref="AIR"/>
+            <solidref ref="boxoutS"/>
+            <!-- <solidref ref="boxinS"/> -->
+
+            <physvol>
+                <volumeref ref="Scintillator"/>
+            </physvol>
+
+
+        </volume>
+
+        <volume name="World">
+            <materialref ref="AIR"/>
+            <solidref ref="worldS"/>
+
+            <physvol>
+                <volumeref ref="Detector"/>
+                <!-- <volumeref ref="Fiber"/> -->
+                <!-- <volumeref ref="Reflect"/> -->
+                <!-- <volumeref ref="PMT"/> -->
+            </physvol>
+        </volume>
+
+        &SurfaceSetup;
+
+
+    </structure>
+
+
+    <userinfo>
+      &SurfaceProperty;
+    </userinfo>
+
+
+    <setup name="Default" version="1.0">
+        <world ref="World"/>
+    </setup>
+
+</gdml>
